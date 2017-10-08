@@ -41,56 +41,56 @@
 			</nav>
 		</header>
 
-<div class="container">
-  <h2>Convert a date and time</h2>
-  <div class="row">
-    <div class="col-sm-6">
-      <form id="converter" action="/index.php" method="get" autocomplete="off">
-        <div class="form-group">
-          <label for="time" class="control-label sr-only">Date and time or timestamp</label>
-          <input id="time" name="time" class="form-control input-lg" type="text" maxlength="32" placeholder="Enter a date and time or a timestamp" required autofocus>
+    <div class="container">
+      <h2>Convert a date and time</h2>
+      <div class="row">
+        <div class="col-sm-6">
+          <form id="converter" autocomplete="off">
+            <div class="form-group">
+              <label for="time" class="control-label sr-only">Date and time or timestamp</label>
+              <input id="time" name="time" class="form-control input-lg" type="text" maxlength="32" placeholder="Enter a date and time or a timestamp" required autofocus>
+            </div>
+            <div class="form-group">
+              <label for="timezone_select" class="control-label sr-only">Time zone <small>(optional)</small></label>
+              <input id="timezone_select" name="timezone_select" class="form-control input-lg" type="text" maxlength="64" placeholder="Enter a time zone (optional)">
+              <input id="timezone" name="timezone" type="hidden">
+            </div>
+            <p><button id="converter-submit" class="btn btn-primary btn-lg" type="submit">Convert</button></p>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="timezone_select" class="control-label sr-only">Time zone <small>(optional)</small></label>
-          <input id="timezone_select" name="timezone_select" class="form-control input-lg" type="text" maxlength="64" placeholder="Enter a time zone (optional)">
-          <input id="timezone" name="timezone" type="hidden">
-        </div>
-        <p><button id="converter-submit" class="btn btn-primary btn-lg" type="submit">Convert</button></p>
-      </form>
-    </div>
-    <div class="col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 id="results-title" class="panel-title">Current time</h3>
-        </div>
-        <div class="panel-body">
-          <dl id="results">
-            <dt>Timestamp
-            <a class="help info" href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-info-circle" aria-hidden="true"></i><span class="sr-only"> info</span>
-            </a>
-            </dt>
-            <dd id="results-timestamp">1496121340</dd>
-            <dt>Coordinated Universal Time
-            (<a class="help" href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank"
-            rel="noopener noreferrer">UTC</a>)
-            </dt>
-            <dd id="results-utc">Tuesday, May 30, 2017 5:15:40 am UTC<br>2017-05-30 05:15:40 UTC</dd>
-            <dt id="results-timezone-name">UTC</dt>
-            <dd id="results-timezone">Tuesday, May 30, 2017 5:15:40 am UTC<br>2017-05-30 05:15:40 UTC</dd>
-            <dt>ISO 8601</dt>
-            <dd id="results-iso8601">2017-05-30T05:15:40+0000</dd>
-            <dt>RFC 2822</dt>
-            <dd id="results-rfc2822">Tue, 30 May 2017 05:15:40 +0000</dd>
-          </dl>
-          <div>
-            <p>Repeat this request: <a id="results-links-api" href="http://unixtime.five15.ca/api/1/1496121340/?timezone=UTC">API</a>, <a id="results-links-web" href="http://unixtime.five15.ca?time=1496121340&amp;timezone=UTC">Web</a></p>
+        <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 id="results-title" class="panel-title">Current time</h3>
+            </div>
+            <div class="panel-body">
+              <dl id="results">
+                <dt>Timestamp
+                <a class="help info" href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-info-circle" aria-hidden="true"></i><span class="sr-only"> info</span>
+                </a>
+                </dt>
+                <dd id="results-timestamp"></dd>
+                <dt>Coordinated Universal Time
+                (<a class="help" href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank"
+                rel="noopener noreferrer">UTC</a>)
+                </dt>
+                <dd id="results-utc"></dd>
+                <dt id="results-timezone-name">UTC</dt>
+                <dd id="results-timezone"></dd>
+                <dt>ISO 8601</dt>
+                <dd id="results-iso8601"></dd>
+                <dt>RFC 2822</dt>
+                <dd id="results-rfc2822"></dd>
+              </dl>
+              <div>
+                <p>Repeat this request: <a id="results-links-api" href="">API</a>, <a id="results-links-web" href="">Web</a></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script src="/js/bootstrap3-typeahead.min.js"></script>
