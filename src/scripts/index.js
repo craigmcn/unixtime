@@ -1,7 +1,7 @@
 import '../styles/index.scss'
 import autocomplete from './autocomplete'
 import getParameterByName from './getParameterByName'
-import addAlert from './addAlert'
+import addAlert, { removeAlert } from './addAlert'
 
 const chrono = require('chrono-node'),
   moment = require('moment'),
@@ -70,6 +70,8 @@ converter.addEventListener('submit', e => {
         'warning',
         warning
       )
+    } else {
+      removeAlert('results-error')
     }
     document.getElementById('results-title').innerHTML = title
     document.getElementById('results-timestamp').innerHTML = momentDate.unix()

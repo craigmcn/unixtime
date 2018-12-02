@@ -1,5 +1,5 @@
 export default (before, id, type, content) => {
-  if (document.getElementById(id)) document.getElementById(id).remove()
+  removeAlert(id)
   const newNode = document.createElement('div')
   let icon
   newNode.setAttribute('id', id)
@@ -13,4 +13,8 @@ export default (before, id, type, content) => {
   }
   newNode.innerHTML = `<i class="far ${icon}" aria-hidden="true"></i> ${content}`
   before.parentNode.insertBefore(newNode, before)
+}
+
+export const removeAlert = id => {
+  if (document.getElementById(id)) document.getElementById(id).remove()
 }
