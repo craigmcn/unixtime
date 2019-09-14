@@ -11,7 +11,7 @@ export default (before, id, type, content) => {
     newNode.classList.add('alert--danger')
     icon = 'fa-exclamation-circle'
   }
-  newNode.innerHTML = `<i class="far ${icon}" aria-hidden="true"></i> ${content}`
+  newNode.innerHTML = `<span class="fad ${icon}" aria-hidden="true"></span> ${content}`
   before.parentNode.insertBefore(newNode, before)
 }
 
