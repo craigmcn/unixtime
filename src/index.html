@@ -19,27 +19,34 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#005b99"> -->
 
+  <link rel="stylesheet" href="https://www.craigmcn.com/albertcss/css/albert.min.css">
+
 </head>
 
 <body>
+
   <header class="header">
+    <div class="brand">
+      <!-- <img src="/nameplate.2019-11-24.png" alt=""> -->
+      craigmcn
+    </div>
     <h1>Unix Timestamp Converter</h1>
   </header>
 
-  <main class="main">
+  <main class="main main--fixed">
     <h1>Convert a date and time</h1>
 
-    <section class="container container--flex">
-      <section>
+    <div class="flex flex--grid">
+      <section class="flex__item flex__item--12 flex__item--6-md">
         <form id="converter" class="form" autocomplete="off">
           <p class="form__group">
             <label for="time" class="visually-hidden">Date and time or timestamp</label>
-            <input id="time" name="time" class="form__control input--lg" type="text" maxlength="32"
+            <input id="time" name="time" class="form__control input input--large" type="text" maxlength="32"
               placeholder="Enter a date and time or a timestamp" required autofocus />
           </p>
           <p class="form__group">
             <label for="timezone_select" class="visually-hidden">Time zone <small>(optional)</small></label>
-            <input id="timezone_select" name="timezone_select" class="form__control input--lg" type="text"
+            <input id="timezone_select" name="timezone_select" class="form__control input input--large" type="text"
               maxlength="64" placeholder="Enter a time zone (optional)" />
             <input id="timezone" name="timezone" type="hidden" />
           </p>
@@ -51,11 +58,11 @@
         </form>
       </section>
 
-      <section class="panel">
-        <div class="panel__title">
+      <section class="card flex__item flex__item--12 flex__item--6-md">
+        <div class="card__title">
           <h3 id="results-title">Current time</h3>
         </div>
-        <div class="panel__body">
+        <div class="card__body">
           <dl id="results">
             <dt>
               Timestamp
@@ -81,7 +88,7 @@
           <p><a id="results-links-web" href="">Repeat this request</a></p>
         </div>
       </section>
-    </section>
+    </div>
   </main>
 
   <script src="https://kit.fontawesome.com/453b852cdd.js"></script>
