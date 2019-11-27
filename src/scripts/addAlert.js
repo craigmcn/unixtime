@@ -2,8 +2,8 @@ export default (before, id, type, content) => {
   removeAlert(id)
   const newNode = document.createElement('div')
   let icon
+  newNode.classList.add('alert', 'alert--sm')
   newNode.setAttribute('id', id)
-  newNode.classList.add('alert')
   if (type === 'warning') {
     newNode.classList.add('alert--warning')
     icon = 'fa-exclamation-triangle'
@@ -11,7 +11,10 @@ export default (before, id, type, content) => {
     newNode.classList.add('alert--danger')
     icon = 'fa-exclamation-circle'
   }
-  newNode.innerHTML = `<span class="fad ${icon}" aria-hidden="true"></span> ${content}`
+  newNode.innerHTML = `<div class="alert__icon">
+      <span class="fad ${icon}" aria-hidden="true"></span>
+    </div>
+    <div class="alert__text">${content}</div>`
   before.parentNode.insertBefore(newNode, before)
 }
 
