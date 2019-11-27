@@ -1,4 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unix Timestamp Converter</title><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=wAdO0d8bp8">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unix Timestamp Converter</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=wAdO0d8bp8">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=wAdO0d8bp8">
   <link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png?v=wAdO0d8bp8">
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=wAdO0d8bp8">
@@ -7,5 +15,60 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg?v=wAdO0d8bp8" color="#005b99">
   <link rel="shortcut icon" href="/favicon.ico?v=wAdO0d8bp8">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#005b99"><link rel="stylesheet" href="scripts.762f3c27.css"></head><body> <header class="header"> <h1>Unix Timestamp Converter</h1> </header> <main class="main"> <h1>Convert a date and time</h1> <section class="container container--flex"> <section> <form id="converter" class="form" autocomplete="off"> <p class="form__group"> <label for="time" class="visually-hidden">Date and time or timestamp</label> <input id="time" name="time" class="form__control input--lg" type="text" maxlength="32" placeholder="Enter a date and time or a timestamp" required="" autofocus=""> </p> <p class="form__group"> <label for="timezone_select" class="visually-hidden">Time zone <small>(optional)</small></label> <input id="timezone_select" name="timezone_select" class="form__control input--lg" type="text" maxlength="64" placeholder="Enter a time zone (optional)"> <input id="timezone" name="timezone" type="hidden"> </p> <p> <button id="converter-submit" class="button button--primary button--lg" type="submit"> <span class="fad fa-clock" aria-hidden="true"></span> Convert </button> </p> </form> </section> <section class="panel"> <div class="panel__title"> <h3 id="results-title">Current time</h3> </div> <div class="panel__body"> <dl id="results"> <dt> Timestamp <a class="help info" href="https://en.wikipedia.org/wiki/Unix_time" target="_blank" rel="noopener noreferrer"> <span class="fad fa-info-circle" aria-hidden="true"></span><span class="visually-hidden"> info</span> </a> </dt> <dd id="results-timestamp"></dd> <dt> Coordinated Universal Time (<a class="help" href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank" rel="noopener noreferrer">UTC</a>) </dt> <dd id="results-utc"></dd> <dt id="results-timezone-name">UTC</dt> <dd id="results-timezone"></dd> <dt>ISO 8601</dt> <dd id="results-iso8601"></dd> <dt>RFC 2822</dt> <dd id="results-rfc2822"></dd> </dl> <p><a id="results-links-web" href="">Repeat this request</a></p> </div> </section> </section> </main> <script src="https://kit.fontawesome.com/453b852cdd.js"></script> <script src="scripts.00cb1427.js"></script>
-</body></html>
+  <meta name="theme-color" content="#005b99">
+  <link rel="stylesheet" href="https://www.craigmcn.com/albertcss/css/albert.min.css">
+  <link rel="stylesheet" href="scripts.554ff6cc.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="brand"><img src="/nameplate.2019-11-24.png" alt="">craigmcn </div>
+    <h1>Unix Timestamp Converter</h1>
+  </header>
+  <main class="main main--fixed">
+    <h1>Convert a date and time</h1>
+    <div class="flex flex--grid">
+      <section class="flex__item flex__item--12 flex__item--6-md">
+        <form id="converter" class="form" autocomplete="off">
+          <p class="form__group"> <label for="time" class="visually-hidden">Date and time or timestamp</label> <input
+              id="time" name="time" class="form__control input input--large" type="text" maxlength="32"
+              placeholder="Enter a date and time or a timestamp" required="" autofocus=""> </p>
+          <p class="form__group"> <label for="timezone_select" class="visually-hidden">Time zone
+              <small>(optional)</small></label> <input id="timezone_select" name="timezone_select"
+              class="form__control input input--large" type="text" maxlength="64"
+              placeholder="Enter a time zone (optional)"> <input id="timezone" name="timezone" type="hidden"> </p>
+          <p> <button id="converter-submit" class="button button--primary button--lg" type="submit"> <span
+                class="fad fa-clock" aria-hidden="true"></span> Convert </button> </p>
+        </form>
+      </section>
+      <section class="card flex__item flex__item--12 flex__item--6-md">
+        <div class="card__title">
+          <h3 id="results-title">Current time</h3>
+        </div>
+        <div class="card__body">
+          <dl id="results">
+            <dt> Timestamp <a class="help info" href="https://en.wikipedia.org/wiki/Unix_time" target="_blank"
+                rel="noopener noreferrer"> <span class="fad fa-info-circle" aria-hidden="true"></span><span
+                  class="visually-hidden"> info</span> </a> </dt>
+            <dd id="results-timestamp"></dd>
+            <dt> Coordinated Universal Time (<a class="help"
+                href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank"
+                rel="noopener noreferrer">UTC</a>) </dt>
+            <dd id="results-utc"></dd>
+            <dt id="results-timezone-name">UTC</dt>
+            <dd id="results-timezone"></dd>
+            <dt>ISO 8601</dt>
+            <dd id="results-iso8601"></dd>
+            <dt>RFC 2822</dt>
+            <dd id="results-rfc2822"></dd>
+          </dl>
+          <p><a id="results-links-web" href="">Repeat this request</a></p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="https://kit.fontawesome.com/453b852cdd.js"></script>
+  <script src="scripts.e34e6dea.js"></script>
+</body>
+
+</html>

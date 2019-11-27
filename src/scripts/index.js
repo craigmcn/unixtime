@@ -80,8 +80,8 @@ converter.addEventListener('submit', e => {
     ).innerHTML = `${momentDate
       .utc()
       .format('dddd, MMMM D YYYY h:mm:ss a z')}<br>${momentDate
-      .utc()
-      .format('YYYY-MM-DD HH:mm:ss z')}`
+        .utc()
+        .format('YYYY-MM-DD HH:mm:ss z')}`
     document.getElementById('results-timezone-name').innerHTML = moment.tz.zone(
       timezone
     )
@@ -90,8 +90,8 @@ converter.addEventListener('submit', e => {
     document.getElementById('results-timezone').innerHTML = `${momentDate
       .tz(timezone)
       .format('dddd, MMMM D YYYY h:mm:ss a z')}<br>${momentDate.format(
-      'YYYY-MM-DD HH:mm:ss z'
-    )}`
+        'YYYY-MM-DD HH:mm:ss z'
+      )}`
     if (timezone === 'UTC') {
       document.getElementById(
         'results-timezone-name'
@@ -116,7 +116,7 @@ converter.addEventListener('submit', e => {
       .setAttribute(
         'href',
         `https://www.craigmcn.com/unixtime/?time=${time}&timezone=${timezone ||
-          ''}`
+        ''}`
       )
   }
 
