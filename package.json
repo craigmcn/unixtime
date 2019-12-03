@@ -1,6 +1,6 @@
 {
   "name": "unixtime",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A small date and time converter",
   "main": "index.js",
   "scripts": {

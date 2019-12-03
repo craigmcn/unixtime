@@ -8,6 +8,8 @@ const chrono = require('chrono-node'),
   momentTimezone = require('moment-timezone'),
   converter = document.getElementById('converter')
 
+const initCurrentTime = new Event('submit', { cancelable: true })
+
 converter.addEventListener('submit', e => {
   e.preventDefault()
   const form = e.target,
@@ -123,6 +125,7 @@ converter.addEventListener('submit', e => {
   form.disabled = button.disabled = false
   document.getElementById('timezone').value = ''
   form.reset()
+  return false
 })
 
-converter.dispatchEvent(new Event('submit'))
+converter.dispatchEvent(initCurrentTime)
