@@ -1,15 +1,16 @@
-import '../styles/index.scss'
+import chrono from 'chrono-node'
+import moment from 'moment'
+import 'moment-timezone'
+
 import autocomplete from './autocomplete'
 import getParameterByName from './getParameterByName'
 import addAlert, { removeAlert } from './addAlert'
 
-const chrono = require('chrono-node'),
-  moment = require('moment'),
-  momentTimezone = require('moment-timezone'),
-  converter = document.getElementById('converter')
+import '../styles/index.scss'
 
 const initCurrentTime = new Event('submit', { cancelable: true })
 
+const converter = document.getElementById('converter')
 converter.addEventListener('submit', e => {
   e.preventDefault()
   const form = e.target,
