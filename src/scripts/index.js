@@ -1,15 +1,16 @@
-import '../styles/index.scss'
+import chrono from 'chrono-node'
+import moment from 'moment'
+import 'moment-timezone'
+
 import autocomplete from './autocomplete'
 import getParameterByName from './getParameterByName'
 import addAlert, { removeAlert } from './addAlert'
 
-const chrono = require('chrono-node'),
-  moment = require('moment'),
-  momentTimezone = require('moment-timezone'),
-  converter = document.getElementById('converter')
+import '../styles/index.scss'
 
 const initCurrentTime = new Event('submit', { cancelable: true })
 
+const converter = document.getElementById('converter')
 converter.addEventListener('submit', e => {
   e.preventDefault()
   const form = e.target,
@@ -47,9 +48,17 @@ converter.addEventListener('submit', e => {
     timezone = 'UTC'
   }
   if (isNaN(parseFloat(time))) {
-    chronoTime = chrono.parseDate(time)
-    if (chronoTime) {
-      momentDate = moment(chronoTime)
+    chronoTime = chrono.parse(time)
+    if (chronoTime[0]) {
+      const nowRegex = /^[now\(\)\;?]+$/i // for `now()` no offset calculation is required
+      if (!time.match(nowRegex)) chronoTime[0].start.assign('timezoneOffset', 0)
+      momentDate = moment(chronoTime[0].start.date())
+      if (timezone !== 'UTC') {
+        const timezoneOffset = moment.tz.zone(timezone).parse(Date.UTC(chronoTime[0].start.get('year'), chronoTime[0].start.get('month'), chronoTime[0].start.get('day'), chronoTime[0].start.get('hour'), chronoTime[0].start.get('minute'), chronoTime[0].start.get('second')))
+        if (!time.match(nowRegex)) {
+          momentDate = moment.unix(momentDate.unix() + (timezoneOffset * 60))
+        }
+      }
     } else {
       error = 'Invalid time provided'
     }
