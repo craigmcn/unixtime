@@ -19,15 +19,15 @@
   "author": "Craig McNaughton",
   "license": "ISC",
   "dependencies": {
-    "chrono-node": "^1.4.4",
+    "chrono-node": "^1.4.8",
     "js-autocomplete": "^1.0.4",
-    "moment": "^2.24.0",
-    "moment-timezone": "^0.5.28",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
     "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.5",
-    "sass": "^1.26.3"
+    "autoprefixer": "^9.8.5",
+    "sass": "^1.26.10"
   },
   "browserslist": [
     "last 2 versions",
