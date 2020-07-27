@@ -19,7 +19,7 @@
   "author": "Craig McNaughton",
   "license": "ISC",
   "dependencies": {
-    "chrono-node": "^1.4.8",
+    "chrono-node": "^2.1.5",
     "js-autocomplete": "^1.0.4",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
