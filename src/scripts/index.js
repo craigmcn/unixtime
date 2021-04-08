@@ -6,12 +6,12 @@ import autocomplete from './autocomplete'
 import getParameterByName from './getParameterByName'
 import addAlert, { removeAlert } from './addAlert'
 
-import '../styles/index.scss'
+// import '../styles/index.scss'
 
 const initCurrentTime = new Event('submit', { cancelable: true })
 
 const converter = document.getElementById('converter')
-converter.addEventListener('submit', (e) => {
+converter.addEventListener('submit', e => {
     e.preventDefault()
 
     const form = e.target,
