@@ -56,7 +56,7 @@ const timezones = [
   { id: 'America/Cancun', value: '(GMT-05:00) America/Cancun' },
   {
     id: 'America/Indiana/Tell_City',
-    value: '(GMT-05:00) America/Indiana/Tell_City'
+    value: '(GMT-05:00) America/Indiana/Tell_City',
   },
   { id: 'America/Bogota', value: '(GMT-05:00) America/Bogota' },
   { id: 'America/Chicago', value: '(GMT-05:00) America/Chicago' },
@@ -68,11 +68,11 @@ const timezones = [
   { id: 'Pacific/Easter', value: '(GMT-05:00) Pacific/Easter' },
   {
     id: 'America/North_Dakota/New_Salem',
-    value: '(GMT-05:00) America/North_Dakota/New_Salem'
+    value: '(GMT-05:00) America/North_Dakota/New_Salem',
   },
   {
     id: 'America/North_Dakota/Center',
-    value: '(GMT-05:00) America/North_Dakota/Center'
+    value: '(GMT-05:00) America/North_Dakota/Center',
   },
   { id: 'America/Rio_Branco', value: '(GMT-05:00) America/Rio_Branco' },
   { id: 'America/Resolute', value: '(GMT-05:00) America/Resolute' },
@@ -81,7 +81,7 @@ const timezones = [
   { id: 'America/Rainy_River', value: '(GMT-05:00) America/Rainy_River' },
   {
     id: 'America/North_Dakota/Beulah',
-    value: '(GMT-05:00) America/North_Dakota/Beulah'
+    value: '(GMT-05:00) America/North_Dakota/Beulah',
   },
   { id: 'America/Mexico_City', value: '(GMT-05:00) America/Mexico_City' },
   { id: 'America/Monterrey', value: '(GMT-05:00) America/Monterrey' },
@@ -89,7 +89,7 @@ const timezones = [
   { id: 'America/Indiana/Vevay', value: '(GMT-04:00) America/Indiana/Vevay' },
   {
     id: 'America/Indiana/Marengo',
-    value: '(GMT-04:00) America/Indiana/Marengo'
+    value: '(GMT-04:00) America/Indiana/Marengo',
   },
   { id: 'America/St_Kitts', value: '(GMT-04:00) America/St_Kitts' },
   { id: 'America/Havana', value: '(GMT-04:00) America/Havana' },
@@ -103,7 +103,7 @@ const timezones = [
   { id: 'America/Puerto_Rico', value: '(GMT-04:00) America/Puerto_Rico' },
   {
     id: 'America/Indiana/Indianapolis',
-    value: '(GMT-04:00) America/Indiana/Indianapolis'
+    value: '(GMT-04:00) America/Indiana/Indianapolis',
   },
   { id: 'America/Tortola', value: '(GMT-04:00) America/Tortola' },
   { id: 'America/Santo_Domingo', value: '(GMT-04:00) America/Santo_Domingo' },
@@ -119,29 +119,29 @@ const timezones = [
   { id: 'America/Nassau', value: '(GMT-04:00) America/Nassau' },
   {
     id: 'America/Kentucky/Monticello',
-    value: '(GMT-04:00) America/Kentucky/Monticello'
+    value: '(GMT-04:00) America/Kentucky/Monticello',
   },
   { id: 'America/Port-au-Prince', value: '(GMT-04:00) America/Port-au-Prince' },
   {
     id: 'America/Indiana/Winamac',
-    value: '(GMT-04:00) America/Indiana/Winamac'
+    value: '(GMT-04:00) America/Indiana/Winamac',
   },
   {
     id: 'America/Indiana/Vincennes',
-    value: '(GMT-04:00) America/Indiana/Vincennes'
+    value: '(GMT-04:00) America/Indiana/Vincennes',
   },
   { id: 'America/Pangnirtung', value: '(GMT-04:00) America/Pangnirtung' },
   { id: 'America/Iqaluit', value: '(GMT-04:00) America/Iqaluit' },
   { id: 'America/New_York', value: '(GMT-04:00) America/New_York' },
   {
     id: 'America/Kentucky/Louisville',
-    value: '(GMT-04:00) America/Kentucky/Louisville'
+    value: '(GMT-04:00) America/Kentucky/Louisville',
   },
   { id: 'America/Nipigon', value: '(GMT-04:00) America/Nipigon' },
   { id: 'America/Porto_Velho', value: '(GMT-04:00) America/Porto_Velho' },
   {
     id: 'America/Indiana/Petersburg',
-    value: '(GMT-04:00) America/Indiana/Petersburg'
+    value: '(GMT-04:00) America/Indiana/Petersburg',
   },
   { id: 'America/Blanc-Sablon', value: '(GMT-04:00) America/Blanc-Sablon' },
   { id: 'America/Boa_Vista', value: '(GMT-04:00) America/Boa_Vista' },
@@ -163,21 +163,21 @@ const timezones = [
   { id: 'America/Araguaina', value: '(GMT-03:00) America/Araguaina' },
   {
     id: 'America/Argentina/Buenos_Aires',
-    value: '(GMT-03:00) America/Argentina/Buenos_Aires'
+    value: '(GMT-03:00) America/Argentina/Buenos_Aires',
   },
   {
     id: 'America/Argentina/Catamarca',
-    value: '(GMT-03:00) America/Argentina/Catamarca'
+    value: '(GMT-03:00) America/Argentina/Catamarca',
   },
   { id: 'America/Montevideo', value: '(GMT-03:00) America/Montevideo' },
   {
     id: 'America/Argentina/Cordoba',
-    value: '(GMT-03:00) America/Argentina/Cordoba'
+    value: '(GMT-03:00) America/Argentina/Cordoba',
   },
   { id: 'America/Sao_Paulo', value: '(GMT-03:00) America/Sao_Paulo' },
   {
     id: 'America/Argentina/La_Rioja',
-    value: '(GMT-03:00) America/Argentina/La_Rioja'
+    value: '(GMT-03:00) America/Argentina/La_Rioja',
   },
   { id: 'Antarctica/Rothera', value: '(GMT-03:00) Antarctica/Rothera' },
   { id: 'America/Paramaribo', value: '(GMT-03:00) America/Paramaribo' },
@@ -188,12 +188,12 @@ const timezones = [
   { id: 'America/Santiago', value: '(GMT-03:00) America/Santiago' },
   {
     id: 'America/Argentina/Jujuy',
-    value: '(GMT-03:00) America/Argentina/Jujuy'
+    value: '(GMT-03:00) America/Argentina/Jujuy',
   },
   { id: 'Atlantic/Bermuda', value: '(GMT-03:00) Atlantic/Bermuda' },
   {
     id: 'America/Argentina/Mendoza',
-    value: '(GMT-03:00) America/Argentina/Mendoza'
+    value: '(GMT-03:00) America/Argentina/Mendoza',
   },
   { id: 'America/Belem', value: '(GMT-03:00) America/Belem' },
   { id: 'America/Fortaleza', value: '(GMT-03:00) America/Fortaleza' },
@@ -204,28 +204,28 @@ const timezones = [
   { id: 'America/Cayenne', value: '(GMT-03:00) America/Cayenne' },
   {
     id: 'America/Argentina/San_Juan',
-    value: '(GMT-03:00) America/Argentina/San_Juan'
+    value: '(GMT-03:00) America/Argentina/San_Juan',
   },
   {
     id: 'America/Argentina/San_Luis',
-    value: '(GMT-03:00) America/Argentina/San_Luis'
+    value: '(GMT-03:00) America/Argentina/San_Luis',
   },
   { id: 'America/Maceio', value: '(GMT-03:00) America/Maceio' },
   {
     id: 'America/Argentina/Ushuaia',
-    value: '(GMT-03:00) America/Argentina/Ushuaia'
+    value: '(GMT-03:00) America/Argentina/Ushuaia',
   },
   {
     id: 'America/Argentina/Tucuman',
-    value: '(GMT-03:00) America/Argentina/Tucuman'
+    value: '(GMT-03:00) America/Argentina/Tucuman',
   },
   {
     id: 'America/Argentina/Salta',
-    value: '(GMT-03:00) America/Argentina/Salta'
+    value: '(GMT-03:00) America/Argentina/Salta',
   },
   {
     id: 'America/Argentina/Rio_Gallegos',
-    value: '(GMT-03:00) America/Argentina/Rio_Gallegos'
+    value: '(GMT-03:00) America/Argentina/Rio_Gallegos',
   },
   { id: 'America/St_Johns', value: '(GMT-02:30) America/St_Johns' },
   { id: 'America/Godthab', value: '(GMT-02:00) America/Godthab' },
@@ -457,7 +457,7 @@ const timezones = [
   { id: 'Australia/Sydney', value: '(GMT+10:00) Australia/Sydney' },
   {
     id: 'Antarctica/DumontDUrville',
-    value: '(GMT+10:00) Antarctica/DumontDUrville'
+    value: '(GMT+10:00) Antarctica/DumontDUrville',
   },
   { id: 'Asia/Vladivostok', value: '(GMT+10:00) Asia/Vladivostok' },
   { id: 'Asia/Ust-Nera', value: '(GMT+10:00) Asia/Ust-Nera' },
@@ -497,11 +497,12 @@ const timezones = [
   { id: 'America/Winnipeg', value: '(GMT-05:00) Canada/Central' },
   { id: 'America/Toronto', value: '(GMT-04:00) Canada/Eastern' },
   { id: 'America/Halifax', value: '(GMT-03:00) Canada/Atlantic' },
-  { id: 'America/St_Johns', value: '(GMT-02:30) Canada/Newfoundland' }
+  { id: 'America/St_Johns', value: '(GMT-02:30) Canada/Newfoundland' },
 ]
 
 export default new autoComplete({
   selector: '#timezone_select',
+  minChars: 2,
   source: (term, suggest) => {
     term = term.toLowerCase()
     let suggestions = []
@@ -520,5 +521,5 @@ export default new autoComplete({
   onSelect: (e, term, item) => {
     document.getElementById('timezone_select').value = item.dataset.value
     document.getElementById('timezone').value = item.dataset.id
-  }
+  },
 })
