@@ -1,5 +1,8 @@
 const gulp = require('gulp')
 const gulpif = require('gulp-if')
+const hash = require('gulp-hash')
+const hashOptions = { template: '<%= name %>.<%= hash %><%= ext %>' }
+const hashFilename = 'hash-manifest.json'
 const argv = require('minimist')(process.argv.slice(2))
 const env = argv.env ? argv.env : 'development'
 const output = {
@@ -24,12 +27,21 @@ gulp.task('css', (done) => {
         env === 'production',
         purgecss({
           content: ['**/*.html'],
+          safelist: ['autocomplete-suggestions'],
           defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
         })
       )
     )
     .pipe(gulpif(env === 'production', cleancss()))
     .pipe(rename('./css/styles.css'))
+    .pipe(hash(hashOptions))
+    .pipe(gulp.dest(output[env]))
+    .pipe(
+      hash.manifest(hashFilename, {
+        deleteOld: true,
+        sourceDir: __dirname + output[env].substring(1),
+      })
+    )
     .pipe(gulp.dest(output[env]))
   done()
 })
@@ -60,13 +72,28 @@ gulp.task('js', (done) => {
     .pipe(gulpif(env === 'production', sourcemaps.init({ loadMaps: true })))
     .pipe(gulpif(env === 'production', uglify()))
     .pipe(gulpif(env === 'production', sourcemaps.write('./')))
+    .pipe(hash(hashOptions))
+    .pipe(gulp.dest(output[env]))
+    .pipe(
+      hash.manifest(hashFilename, {
+        deleteOld: true,
+        sourceDir: __dirname + output[env].substring(1),
+        append: true,
+      })
+    )
     .pipe(gulp.dest(output[env]))
   done()
 })
 
 // HTML
 gulp.task('html', (done) => {
-  gulp.src('./src/**/*.html').pipe(gulp.dest(output[env]))
+  const { readFileSync } = require('fs')
+  const rewrite = require('gulp-rev-rewrite')
+  const manifest = readFileSync(`${output[env]}/${hashFilename}`)
+  gulp
+    .src('./src/**/*.html')
+    .pipe(rewrite({ manifest }))
+    .pipe(gulp.dest(output[env]))
   done()
 })
 
