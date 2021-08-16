@@ -20,9 +20,17 @@ gulp.task('css', function () {
   const cleancss = require('gulp-clean-css')
   const rename = require('gulp-rename')
 
+  if (!fs.existsSync(output[env])) {
+    fs.mkdirSync(output[env], { recursive: true })
+    console.log('Created output directory')
+  }
+
   fs.writeFile(`${output[env]}/${hashFilename}`, '{}', { flag: 'wx' }, (e) => {
-    if (e) throw e
-    console.log(`Created empty hash file: ${output[env]}/${hashFilename}`)
+    if (e) {
+      console.log(`${output[env]}/${hashFilename} exists`)
+    } else {
+      console.log(`Created empty hash file: ${output[env]}/${hashFilename}`)
+    }
   })
 
   return gulp
