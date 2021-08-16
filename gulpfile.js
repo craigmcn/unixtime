@@ -1,3 +1,4 @@
+const fs = require('fs')
 const gulp = require('gulp')
 const gulpif = require('gulp-if')
 const hash = require('gulp-hash')
@@ -12,14 +13,19 @@ const output = {
 const browserSync = require('browser-sync').create()
 
 // CSS
-gulp.task('css', (done) => {
+gulp.task('css', function () {
   const postcss = require('gulp-postcss')
   const tailwindcss = require('tailwindcss')
   const purgecss = require('gulp-purgecss')
   const cleancss = require('gulp-clean-css')
   const rename = require('gulp-rename')
 
-  gulp
+  fs.writeFile(`${output[env]}/${hashFilename}`, '{}', { flag: 'wx' }, (e) => {
+    if (e) throw e
+    console.log(`Created empty hash file: ${output[env]}/${hashFilename}`)
+  })
+
+  return gulp
     .src('./src/styles/index.css')
     .pipe(postcss([tailwindcss('tailwind.config.js'), require('autoprefixer')]))
     .pipe(
@@ -43,7 +49,6 @@ gulp.task('css', (done) => {
       })
     )
     .pipe(gulp.dest(output[env]))
-  done()
 })
 
 // JS
@@ -54,18 +59,19 @@ const buffer = require('vinyl-buffer')
 const sourcemaps = require('gulp-sourcemaps')
 const uglify = require('gulp-uglify')
 
-gulp.task('js', (done) => {
+gulp.task('js', function () {
   const b = browserify({
     entries: 'src/scripts/index.js',
     debug: env === 'production',
   })
 
-  b.transform(
-    babelify.configure({
-      presets: ['@babel/preset-env'],
-      sourceMaps: env === 'production',
-    })
-  )
+  return b
+    .transform(
+      babelify.configure({
+        presets: ['@babel/preset-env'],
+        sourceMaps: env === 'production',
+      })
+    )
     .bundle()
     .pipe(source('js/scripts.js'))
     .pipe(buffer())
@@ -82,15 +88,15 @@ gulp.task('js', (done) => {
       })
     )
     .pipe(gulp.dest(output[env]))
-  done()
 })
 
 // HTML
-gulp.task('html', (done) => {
+gulp.task('html', function () {
   const { readFileSync } = require('fs')
   const rewrite = require('gulp-rev-rewrite')
   const manifest = readFileSync(`${output[env]}/${hashFilename}`)
-  gulp
+
+  return gulp
     .src('./src/**/*.html')
     .pipe(rewrite({ manifest }))
     .pipe(gulp.dest(output[env]))
@@ -98,7 +104,7 @@ gulp.task('html', (done) => {
 })
 
 // Build
-gulp.task('build', gulp.parallel('css', 'js', 'html'))
+gulp.task('build', gulp.series('css', 'js', 'html'))
 
 // Reload browser
 gulp.task('reload', (done) => {
