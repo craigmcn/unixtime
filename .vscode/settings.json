@@ -12,4 +12,15 @@
     "prettier.semi": false,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "es5",
+    "cSpell.words": [
+        "browserslist",
+        "chrono",
+        "cleancss",
+        "craigmcn",
+        "gulpif",
+        "purgecss",
+        "tailwindcss",
+        "unixtime",
+        "unixtimestamp"
+    ],
 }
