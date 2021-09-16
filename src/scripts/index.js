@@ -2,7 +2,6 @@ import * as chrono from 'chrono-node'
 import moment from 'moment'
 import 'moment-timezone'
 
-import autocomplete from './autocomplete'
 import getParameterByName from './getParameterByName'
 import addAlert, { removeAlert } from './addAlert'
 
@@ -13,20 +12,20 @@ const converter = document.getElementById('converter')
 converter.addEventListener('submit', e => {
     e.preventDefault()
 
-    const form = e.target,
-        button = document.getElementById('converter-submit'),
-        submitTime = document.getElementById('time').value,
-        submitTimezone = document.getElementById('timezone').value,
-        submitTimezoneSelect = document.getElementById('timezone_select').value
+    const form = e.target
+    const button = document.getElementById('converter-submit')
+    const submitTime = document.getElementById('time').value
+    const submitTimezone = document.getElementById('timezone').value
+    const submitTimezoneSelect = document.getElementById('timezone_select').value
 
-    let time,
-        numericTime,
-        timezone,
-        momentDate,
-        chronoTime,
-        error,
-        warning,
-        title = 'Converted time'
+    let time
+    let numericTime
+    let timezone
+    let momentDate
+    let chronoTime
+    let error
+    let warning
+    let title = 'Converted time'
 
     form.disabled = button.disabled = true
 
@@ -37,7 +36,7 @@ converter.addEventListener('submit', e => {
         time = getParameterByName('time')
         numericTime = Number(time)
     } else {
-        var d = new Date()
+        const d = new Date()
         numericTime = time = d.getTime()
         title = 'Current time'
     }
@@ -59,9 +58,8 @@ converter.addEventListener('submit', e => {
         chronoTime = chrono.parse(time, null, { forwardDate: true })
 
         if (chronoTime[0]) {
-            const nowRegex = /^[now\(\)\;?]+$/i // for `now()` no offset calculation is required
-            if (!time.match(nowRegex))
-                chronoTime[0].start.assign('timezoneOffset', 0)
+            const nowRegex = /^[now();?]+$/i // for `now()` no offset calculation is required
+            if (!time.match(nowRegex)) { chronoTime[0].start.assign('timezoneOffset', 0) }
             momentDate = moment(chronoTime[0].start.date())
             if (timezone !== 'UTC') {
                 const timezoneOffset = moment.tz
