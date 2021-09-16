@@ -2,6 +2,8 @@ import * as chrono from 'chrono-node'
 import moment from 'moment'
 import 'moment-timezone'
 
+// eslint-disable-next-line
+import autocomplete from './autocomplete'
 import getParameterByName from './getParameterByName'
 import addAlert, { removeAlert } from './addAlert'
 
