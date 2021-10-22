@@ -21,6 +21,13 @@
 
     <link rel="stylesheet" href="css/styles.css">
 
+    <script>
+        (function () {
+            if (!window.location.pathname.endsWith("/")) {
+                window.location = window.location + "/"
+            }
+        }())
+    </script>
     <script src="https://kit.fontawesome.com/b422263e43.js" crossorigin="anonymous" defer></script>
 </head>
 
