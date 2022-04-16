@@ -27,7 +27,7 @@
   "dependencies": {
     "chrono-node": "^2.3.7",
     "js-autocomplete": "^1.0.4",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.31"
   },
   "devDependencies": {
