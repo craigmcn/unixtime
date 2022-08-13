@@ -1,20 +1,17 @@
 module.exports = {
-    purge: {
-        content: ['./src/**/*.html', './src/**/*.js'],
-    },
-    darkMode: false, // or 'media' or 'class'
+    content: ['./src/**/*.html', './src/**/*.js'],
     theme: {
         extend: {
             colors: {
                 primary: {
                     DEFAULT: '#005b99',
-                    dark: '#00375c',
-                },
-            },
-        },
+                    dark: '#00375c'
+                }
+            }
+        }
     },
     variants: {
-        extend: {},
+        extend: {}
     },
-    plugins: [],
+    plugins: []
 }

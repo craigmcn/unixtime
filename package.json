@@ -7,7 +7,8 @@
     "build": "gulp build --env=production",
     "build:netlify": "gulp build --env=netlify",
     "dev": "gulp build",
-    "serve": "gulp serve"
+    "serve": "gulp serve",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "keywords": [
     "unixtimestamp",
@@ -25,23 +26,24 @@
     "url": "git://github.com/craigmcn/unixtime.git"
   },
   "dependencies": {
-    "chrono-node": "^2.3.7",
+    "chrono-node": "^2.3.9",
     "js-autocomplete": "^1.0.4",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.31"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
-    "autoprefixer": "^10.4.2",
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "autoprefixer": "^10.4.8",
     "babelify": "^10.0.0",
-    "browser-sync": "^2.26.14",
+    "browser-sync": "^2.27.10",
     "browserify": "^17.0.0",
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint": "^8.21.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-promise": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-hash": "^4.2.2",
@@ -54,7 +56,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "minimist": "^1.2.6",
-    "tailwindcss": "^2.2.17",
+    "tailwindcss": "^3.1.8",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
