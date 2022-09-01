@@ -29,7 +29,7 @@
     "chrono-node": "^2.3.9",
     "js-autocomplete": "^1.0.4",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.31"
+    "moment-timezone": "^0.5.35"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
