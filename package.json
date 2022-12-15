@@ -1,67 +1,45 @@
 {
   "name": "unixtime",
-  "version": "1.2.6",
-  "description": "A small date and time converter",
-  "main": "index.js",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "build": "gulp build --env=production",
-    "build:netlify": "gulp build --env=netlify",
-    "dev": "gulp build",
-    "serve": "gulp serve",
-    "lint": "./node_modules/.bin/eslint src"
-  },
-  "keywords": [
-    "unixtimestamp",
-    "converter",
-    "conversion",
-    "plain",
-    "language",
-    "date",
-    "time"
-  ],
-  "author": "Craig McNaughton",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/craigmcn/unixtime.git"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:netlify": "tsc && vite build --config vite.config.netlify.ts",
+    "preview": "vite preview",
+    "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx --fix ./src"
   },
   "dependencies": {
-    "chrono-node": "^2.4.1",
-    "js-autocomplete": "^1.0.4",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/pro-duotone-svg-icons": "^6.2.1",
+    "@fortawesome/pro-light-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "babel-plugin-macros": "^3.1.0",
+    "chrono-node": "^2.4.2",
+    "classnames": "^2.3.2",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.35"
+    "moment-timezone": "^0.5.40",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-select": "^5.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.2",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/core": "^7.20.5",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
-    "babelify": "^10.0.0",
-    "browser-sync": "^2.27.10",
-    "browserify": "^17.0.0",
-    "eslint": "^8.27.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.5.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-hash": "^4.2.2",
-    "gulp-if": "^3.0.0",
-    "gulp-postcss": "^9.0.0",
-    "gulp-purgecss": "^5.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-rev-rewrite": "^5.0.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "minimist": "^1.2.7",
+    "babel-plugin-typescript-to-proptypes": "^2.0.0",
+    "eslint": "^8.29.0",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
   },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%"
-  ]
+  "peerDependencies": {}
 }
