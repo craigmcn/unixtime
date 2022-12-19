@@ -37,7 +37,10 @@ const Form = ({ setConversion }: IFormProps) => {
           <input
             id="time"
             ref={ timeRef }
-            className="text-xl border border-gray-400 rounded p-2 w-full"
+            className={ `text-xl border border-gray-400 rounded p-2 w-full
+              dark:text-white dark:bg-gray-800 dark:border-gray-600
+              focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-inverse
+              focus:border-transparent` }
             type="text"
             maxLength={ 64 }
             placeholder="Enter a date and time or a timestamp"
@@ -51,72 +54,22 @@ const Form = ({ setConversion }: IFormProps) => {
           <Select
             id="timezone"
             ref={ timezoneRef }
-            className="text-xl"
+            className="react-select-container text-xl"
+            classNamePrefix="react-select"
             options={ options }
             isClearable
             placeholder="Enter a time zone (optional)"
-            styles={ {
-              control: base => ({
-                ...base,
-                borderColor: '#9ca3af', // gray-400
-                '&:hover': {
-                  borderColor: '#9ca3af', // gray-400, reset
-                },
-              }),
-              option: (base, state) => ({
-                ...base,
-                fontSize: '1rem',
-                lineHeight: 1,
-                backgroundColor: state.isSelected ? '#005b99' : state.isFocused ? '#e5e7eb' : 'white', // primary, gray-200
-                '&:active': {
-                  backgroundColor: '#e6eff5', // primary @ 10% opacity on white
-                  color: '#2c536d', // contrasting WCAG AAA color: https://www.craigmcn.com/colours/
-                },
-              }),
-              placeholder: base => ({
-                ...base,
-                color: '#9ca3af', // gray-400
-                margin: 0,
-              }),
-              clearIndicator: base => ({
-                ...base,
-                color: '#9ca3af', // gray-400
-                '&:hover': {
-                  color: '#4b5563', // gray-600
-                },
-              }),
-              indicatorSeparator: base => ({
-                ...base,
-                color: '#e5e7eb', // gray-200
-              }),
-              dropdownIndicator: base => ({
-                ...base,
-                color: '#9ca3af', // gray-400
-                '&:hover': {
-                  color: '#4b5563', // gray-600
-                },
-              }),
-              input: base => ({
-                ...base,
-                margin: 0,
-                padding: 0,
-              }),
-              singleValue: base => ({
-                ...base,
-                margin: 0,
-                padding: 0,
-              }),
-              valueContainer: base => ({
-                ...base,
-                padding: '0.5rem',
-              }),
-            } }
           />
         </div>
 
         <div>
           <Button
-            className="text-primary border-primary hover:text-white hover:bg-primary hover:border-primary-dark text-xl"
+            className={ `text-xl text-primary border-primary
+              dark:text-primary-inverse dark:border-primary-inverse
+              hover:text-white hover:bg-primary hover:border-primary-dark
+              dark:hover:text-white dark:hover:bg-primary dark:hover:border-primary
+              focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+              dark:focus:ring-primary-inverse` }
             type="submit"
           >
             <FontAwesomeIcon icon={ faClock } className="mr-1" />
