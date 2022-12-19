@@ -28,8 +28,9 @@ const Result = ({ data }: IResultProps) => {
   }, [momentDate, timezone]);
 
   return (
-    <Section className="border border-gray-400 rounded">
-      <div className="p-4 bg-gray-100 rounded rounded-b-none border-b border-gray-400">
+    <Section className="border border-gray-400 dark:border-gray-600 rounded">
+      <div className={ `p-4 bg-gray-100 rounded rounded-b-none border-b border-gray-400
+        dark:text-white dark:bg-gray-800 dark:border-gray-600` }>
         <h3 id="results-title" className="text-xl">{title}</h3>
       </div>
 
@@ -43,26 +44,32 @@ const Result = ({ data }: IResultProps) => {
           <dt className="font-bold">
             Timestamp
             <a
-              className="text-primary hover:text-primary-dark"
+              className={ `ml-1 text-primary dark:text-primary-inverse rounded
+                hover:text-primary-dark dark:hover:text-primary-inverse-active
+                focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-inverse
+                focus:border-transparent` }
               href="https://en.wikipedia.org/wiki/Unix_time"
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon icon={ faCircleInfo } className="ml-1" />
+              <FontAwesomeIcon icon={ faCircleInfo } />
               <span className="sr-only">info</span>
             </a>
           </dt>
           <dd>{momentDate?.unix()}</dd>
           <dt className="font-bold mt-2">
             Coordinated Universal Time
-            (<a
-              className="text-primary hover:text-primary-dark hover:underline"
+            <a
+              className={ `ml-2 text-primary dark:text-primary-inverse rounded
+                hover:text-primary-dark dark:hover:text-primary-inverse-active hover:underline
+                focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-inverse
+                focus:border-transparent` }
               href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time"
               target="_blank"
               rel="noreferrer"
             >
               UTC
-            </a>)
+            </a>
           </dt>
           <dd id="results-utc">
             {momentDate?.utc().format(LONG_DATE)}
@@ -89,7 +96,10 @@ const Result = ({ data }: IResultProps) => {
 
         <div className="flex gap-1 mt-4">
           <Button
-            className="text-slate-500 border-slate-300 hover:text-slate-900 hover:border-slate-500 text-sm"
+            className={ `text-sm text-slate-600 border-slate-400 hover:text-slate-800 hover:border-slate-600
+              dark:text-slate-400 dark:border-slate-600 dark:hover:text-slate-200 dark:hover:border-slate-400
+              focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-inverse
+              focus:border-transparent` }
             href={ repeatUrl }
             title="Repeat this request"
           >
@@ -99,7 +109,10 @@ const Result = ({ data }: IResultProps) => {
 
           {navigator?.clipboard && (
             <Button
-              className="text-slate-500 border-slate-300 hover:text-slate-900 hover:border-slate-500 text-sm"
+              className={ `text-sm text-slate-600 border-slate-400 hover:text-slate-800 hover:border-slate-600
+                dark:text-slate-400 dark:border-slate-600 dark:hover:text-slate-200 dark:hover:border-slate-400
+                focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-inverse
+                focus:border-transparent` }
               title={ `Copy request ${repeatUrl}` }
               onClick={ handleCopy }
             >
