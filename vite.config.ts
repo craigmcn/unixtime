@@ -29,4 +29,7 @@ export default defineConfig({
       plugins: ['babel-plugin-typescript-to-proptypes'],
     },
   })],
+  server: {
+    port: 3120,
+  },
 });
