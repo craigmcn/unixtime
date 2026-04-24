@@ -21,6 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
+        env:
+          FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
       - name: Lint
         run: yarn lint
