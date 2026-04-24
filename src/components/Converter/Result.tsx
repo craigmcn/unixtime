@@ -28,7 +28,7 @@ const Result = ({ data }: IResultProps) => {
   }, [momentDate, timezone]);
 
   return (
-    <Section className="card">
+    <Section className="card rounded-lg">
       <div className="card__title">
         <h3 id="results-title">{title}</h3>
       </div>
