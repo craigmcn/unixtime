@@ -1,13 +1,13 @@
-import React from 'react';
+import type { MouseEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 
 interface IButtonProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   href?: string;
   title?: string;
-  onClick?: (e?: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  onClick?: (e?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 }
 
 const Button = ({ children, className, type = 'button', href, title, ...props }: IButtonProps) => {
@@ -15,10 +15,7 @@ const Button = ({ children, className, type = 'button', href, title, ...props }:
     <>
       {!href && (
         <button
-          className={ classNames(
-            'flex items-center justify-center border rounded py-2 px-4',
-            className,
-          ) }
+          className={ classNames('button', className) }
           type={ type }
           title={ title }
           { ...props }
@@ -28,10 +25,7 @@ const Button = ({ children, className, type = 'button', href, title, ...props }:
       )}
       {href && (
         <a
-          className={ classNames(
-            'flex items-center justify-center border rounded py-2 px-4',
-            className,
-          ) }
+          className={ classNames('button', className) }
           href={ href }
           title={ title }
           { ...props }

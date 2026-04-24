@@ -32,8 +32,12 @@ This is a single-page React + TypeScript app built with Vite 8 + SWC. It convert
 
 **URL state:** `useConversion` reads `?time=` and `?timezone=` query params on mount as initial values. `Result` exposes a "Repeat" link and a "Copy" button that encode the current conversion as a shareable URL via `getRequestUrl()`.
 
-**Styling:** Tailwind CSS with two custom colour tokens — `primary` (blue, light mode) and `primary-inverse` (light blue, dark mode). Dark mode uses `dark:` variants throughout. The `react-select` timezone dropdown uses `react-select-container` / `react-select` class prefixes for custom styling.
-> **Planned (Step 6):** Replace Tailwind with AlbertCSS v0.15.0 (`~/Web/albertcss`). CDN: `https://albertcss.craigmcn.com/v0.15.0/css/albert.min.css`. Dark mode becomes automatic via CSS custom properties — remove all `dark:` prefixes. Class mapping highlights: `sr-only` → `visually-hidden`; `font-bold` → `fw-bold`; `text-red-700` → `text-danger`; `text-yellow-700` → `text-warning`; `flex items-center` → `d-flex align-items-center`; spacing scale is identical (n × 0.25rem).
+**Styling:** AlbertCSS v0.15.0, served via CDN (`https://albertcss.craigmcn.com/v0.15.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown uses `react-select-container` / `react-select` class prefixes for custom styling. Custom project styles live in `src/index.css`.
+
+**CSS conventions:**
+- Use modern CSS nesting with `&` and nested `@media` — no preprocessor (PostCSS/Sass/Tailwind removed).
+- AlbertCSS spacing scale matches Tailwind (n × 0.25rem): `mb-4`, `mt-2`, `gap-1` etc. transfer directly.
+- AlbertCSS class mappings: `sr-only` → `visually-hidden`; `font-bold` → `fw-bold`; `flex items-center` → `d-flex align-items-center`; `np__bg`/`np__txt` for SVG fills in dark mode.
 
 **Timezone data:** `src/data/timezones.json` is a static list of `{value, label}` objects loaded lazily in `Form` via a dynamic `import()`.
 
