@@ -7,7 +7,7 @@ interface ISectionProps {
 }
 
 const Section = ({ children, className, ...props }: ISectionProps) => (
-  <section className={ classNames('app-section', className) } { ...props }>
+  <section className={ classNames('flex__item flex__item--12 flex__item--6-md', className) } { ...props }>
     {children}
   </section>
 );

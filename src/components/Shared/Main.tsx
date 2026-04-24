@@ -7,10 +7,10 @@ interface IMainProps {
 
 const Main = ({ children, title }: IMainProps) => {
   return (
-    <main className="app-main">
-      {!!title && <h1>{title}</h1>}
+    <main className="main main--fixed">
+      {!!title && <h2 className="mt-5 mb-4">{title}</h2>}
 
-      <div className="app-content">
+      <div className="flex flex--grid">
         {children}
       </div>
     </main>

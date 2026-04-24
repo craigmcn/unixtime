@@ -3,11 +3,13 @@ import { DOCUMENT_TITLE } from '../../lib/constants';
 
 const Header = () => {
   return (
-    <header className="app-header">
-      <a href="/">
-        <Logo />
-        craigmcn
-      </a>
+    <header className="header">
+      <div className="brand">
+        <a href="/">
+          <Logo />
+          craigmcn
+        </a>
+      </div>
 
       <h1>{DOCUMENT_TITLE}</h1>
     </header>

@@ -20,9 +20,9 @@ const icon = {
 
 const Alert = ({ type = 'error', children }: IAlertProps) => {
   return (
-    <div className={ classNames('alert mb-4', alertClass[type]) }>
-      <FontAwesomeIcon icon={ icon[type] } className="alert__icon" />
-      <span className="alert__text">{children}</span>
+    <div className={ classNames('alert alert--sm mb-4', alertClass[type]) }>
+      <div className="alert__icon"><FontAwesomeIcon icon={ icon[type] } size="sm" /></div>
+      <div className="alert__text">{children}</div>
     </div>
   );
 };

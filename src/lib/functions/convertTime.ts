@@ -23,7 +23,7 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
     title = 'Current time';
   }
 
-  if (!timezone || !Intl.supportedValuesOf('timeZone').includes(timezone)) {
+  if (!timezone || (!Intl.supportedValuesOf('timeZone').includes(timezone) && timezone !== UTC)) {
     warning = timezone ? 'Invalid timezone provided. Switched to UTC.' : '';
     timezone = UTC;
   }

@@ -28,12 +28,12 @@ const Result = ({ data }: IResultProps) => {
   }, [momentDate, timezone]);
 
   return (
-    <Section className="result-panel">
-      <div className="result-panel__header">
+    <Section className="card">
+      <div className="card__title">
         <h3 id="results-title">{title}</h3>
       </div>
 
-      <div className="result-panel__body">
+      <div className="card__body">
         {(error || warning) && (
           <Alert type={ error ? 'error' : 'warning' }>
             {error || warning}
@@ -89,21 +89,21 @@ const Result = ({ data }: IResultProps) => {
 
         <div className="d-flex gap-1 mt-4">
           <Button
-            className="button--secondary"
+            className="button--sm"
             href={ repeatUrl }
             title="Repeat this request"
           >
-            <FontAwesomeIcon icon={ faRedo } className="me-1" />
+            <FontAwesomeIcon icon={ faRedo } size="xs" className="me-2" />
             Repeat
           </Button>
 
           {navigator?.clipboard && (
             <Button
-              className="button--secondary"
+              className="button--sm"
               title={ `Copy request ${repeatUrl}` }
               onClick={ handleCopy }
             >
-              <FontAwesomeIcon icon={ faCopy } className="me-1" />
+              <FontAwesomeIcon icon={ faCopy } size="xs" className="me-2" />
               Copy <span className="visually-hidden">{`${repeatUrl}`}</span>
             </Button>
           )}

@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react';
-import Select, { SelectInstance } from 'react-select';
+import { SelectInstance } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/sharp-duotone-light-svg-icons';
 import { IFormData, IValue } from '../../lib/types';
 import Section from '../Shared/Section';
 import Button from '../Shared/Button';
+import Select from './Select';
 
 interface IFormProps {
   setConversion: (data: IFormData) => void;
@@ -31,13 +32,13 @@ const Form = ({ setConversion }: IFormProps) => {
 
   return (
     <Section>
-      <form className="mb-4" autoComplete="off" onSubmit={ handleSubmit }>
-        <div className="mb-4">
+      <form autoComplete="off" onSubmit={ handleSubmit }>
+        <div className="form__group">
           <label htmlFor="time" className="visually-hidden">Date and time or timestamp</label>
           <input
             id="time"
             ref={ timeRef }
-            className="form-input"
+            className="form__control form__control--lg"
             type="text"
             maxLength={ 64 }
             placeholder="Enter a date and time or a timestamp"
@@ -46,25 +47,22 @@ const Form = ({ setConversion }: IFormProps) => {
           />
         </div>
 
-        <div className="mb-4">
+        <div className="form__group">
           <label htmlFor="timezone" className="visually-hidden">Time zone <small>(optional)</small></label>
           <Select
             id="timezone"
-            ref={ timezoneRef }
-            className="react-select-container"
-            classNamePrefix="react-select"
+            innerRef={ timezoneRef }
             options={ options }
             isClearable
+            size="lg"
             placeholder="Enter a time zone (optional)"
           />
         </div>
 
-        <div>
-          <Button className="button--primary" type="submit">
-            <FontAwesomeIcon icon={ faClock } className="me-1" />
-            Convert
-          </Button>
-        </div>
+        <Button className="button--primary button--lg" type="submit">
+          <FontAwesomeIcon icon={ faClock } className="me-2" />
+          Convert
+        </Button>
       </form>
     </Section>
   );
