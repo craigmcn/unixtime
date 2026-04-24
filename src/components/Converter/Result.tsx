@@ -24,8 +24,8 @@ interface IResultProps {
 }
 
 const Result = ({ data }: IResultProps) => {
-  const { momentDate, time, timezone, error, warning, title } = data;
-  const repeatUrl = getRequestUrl({ time, timezone, momentDate });
+  const { dateTime, time, timezone, error, warning, title } = data;
+  const repeatUrl = getRequestUrl({ time, timezone, dateTime });
 
   const [, copy] = useCopyToClipboard();
   const handleCopy = useCallback(() => {
@@ -35,10 +35,10 @@ const Result = ({ data }: IResultProps) => {
   useEffect(() => {
     const documentTime =
       !timezone || timezone === UTC
-        ? momentDate.utc()
-        : momentDate.tz(timezone);
+        ? dateTime.utc()
+        : dateTime.tz(timezone);
     document.title = documentTime.format(LONG_DATE) + ' - ' + DOCUMENT_TITLE;
-  }, [momentDate, timezone]);
+  }, [dateTime, timezone]);
 
   return (
     <Section className="card rounded-lg">
@@ -63,7 +63,7 @@ const Result = ({ data }: IResultProps) => {
               <span className="visually-hidden">info</span>
             </a>
           </dt>
-          <dd>{momentDate?.unix()}</dd>
+          <dd>{dateTime?.unix()}</dd>
           <dt className="fw-bold mt-2">
             Coordinated Universal Time
             <a
@@ -76,26 +76,26 @@ const Result = ({ data }: IResultProps) => {
             </a>
           </dt>
           <dd id="results-utc">
-            {momentDate?.utc().format(LONG_DATE)}
+            {dateTime?.utc().format(LONG_DATE)}
             <br />
-            {momentDate?.utc().format(SHORT_DATE)}
+            {dateTime?.utc().format(SHORT_DATE)}
           </dd>
 
           {timezone && timezone !== UTC && (
             <>
               <dt className="fw-bold">{timezone}</dt>
               <dd id="results-timezone">
-                {momentDate?.tz(timezone).format(LONG_DATE)}
+                {dateTime?.tz(timezone).format(LONG_DATE)}
                 <br />
-                {momentDate?.format(SHORT_DATE)}
+                {dateTime?.format(SHORT_DATE)}
               </dd>
             </>
           )}
 
           <dt className="fw-bold mt-2">ISO 8601</dt>
-          <dd>{momentDate?.format('YYYY-MM-DDTHH:mm:ss.SSSZ')}</dd>
+          <dd>{dateTime?.format('YYYY-MM-DDTHH:mm:ss.SSSZ')}</dd>
           <dt className="fw-bold mt-2">RFC 2822</dt>
-          <dd>{momentDate?.format(RFC_2822)}</dd>
+          <dd>{dateTime?.format(RFC_2822)}</dd>
         </dl>
 
         <div className="d-flex gap-1 mt-4">

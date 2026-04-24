@@ -13,7 +13,7 @@ interface ISelectProps {
   placeholder?: string;
 }
 
-const selectStyle: StylesConfig = {
+const selectStyle: StylesConfig<IValue> = {
   container: (provided) => ({
     ...provided,
     marginBottom: '0.25rem',

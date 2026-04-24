@@ -18,7 +18,7 @@ describe('useConversion', () => {
   it('updates data when setConversion is called', async () => {
     const { result } = renderHook(() => useConversion());
 
-    act(() => {
+    await act(() => {
       result.current.setConversion({ time: '1700000000', timezone: UTC });
     });
 

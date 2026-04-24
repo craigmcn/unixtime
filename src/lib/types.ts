@@ -11,7 +11,7 @@ export interface IValue {
 import type { Dayjs } from 'dayjs';
 
 export interface IConversion {
-  momentDate: Dayjs;
+  dateTime: Dayjs;
   time: number | string;
   timezone?: string;
   error?: string;

@@ -6,24 +6,24 @@ describe('convertTime', () => {
   describe('numeric inputs', () => {
     it('converts a unix timestamp in seconds', () => {
       const result = convertTime(1700000000);
-      expect(result.momentDate.unix()).toBe(1700000000);
+      expect(result.dateTime.unix()).toBe(1700000000);
       expect(result.error).toBeUndefined();
       expect(result.title).toBe('Converted time');
     });
 
     it('converts a string unix timestamp in seconds', () => {
       const result = convertTime('1700000000');
-      expect(result.momentDate.unix()).toBe(1700000000);
+      expect(result.dateTime.unix()).toBe(1700000000);
     });
 
     it('converts milliseconds (>= 1e10, < 1e13)', () => {
       const result = convertTime(1700000000000);
-      expect(result.momentDate.unix()).toBe(1700000000);
+      expect(result.dateTime.unix()).toBe(1700000000);
     });
 
     it('converts microseconds (>= 1e13, < 1e16)', () => {
       const result = convertTime(1700000000000000);
-      expect(result.momentDate.unix()).toBe(1700000000);
+      expect(result.dateTime.unix()).toBe(1700000000);
     });
   });
 
@@ -32,8 +32,8 @@ describe('convertTime', () => {
       const before = Math.floor(Date.now() / 1000);
       const result = convertTime('now');
       const after = Math.ceil(Date.now() / 1000);
-      expect(result.momentDate.unix()).toBeGreaterThanOrEqual(before);
-      expect(result.momentDate.unix()).toBeLessThanOrEqual(after);
+      expect(result.dateTime.unix()).toBeGreaterThanOrEqual(before);
+      expect(result.dateTime.unix()).toBeLessThanOrEqual(after);
       expect(result.error).toBeUndefined();
     });
 
@@ -41,14 +41,14 @@ describe('convertTime', () => {
       const before = Math.floor(Date.now() / 1000);
       const result = convertTime('now()');
       const after = Math.ceil(Date.now() / 1000);
-      expect(result.momentDate.unix()).toBeGreaterThanOrEqual(before);
-      expect(result.momentDate.unix()).toBeLessThanOrEqual(after);
+      expect(result.dateTime.unix()).toBeGreaterThanOrEqual(before);
+      expect(result.dateTime.unix()).toBeLessThanOrEqual(after);
     });
 
     it('parses a natural language date string', () => {
       const result = convertTime('January 1, 2024 00:00:00');
       expect(result.error).toBeUndefined();
-      expect(result.momentDate.unix()).toBeGreaterThan(0);
+      expect(result.dateTime.unix()).toBeGreaterThan(0);
     });
 
     it('returns an error for an unparseable string', () => {
@@ -62,8 +62,8 @@ describe('convertTime', () => {
       const before = Math.floor(Date.now() / 1000);
       const result = convertTime('');
       const after = Math.ceil(Date.now() / 1000);
-      expect(result.momentDate.unix()).toBeGreaterThanOrEqual(before);
-      expect(result.momentDate.unix()).toBeLessThanOrEqual(after);
+      expect(result.dateTime.unix()).toBeGreaterThanOrEqual(before);
+      expect(result.dateTime.unix()).toBeLessThanOrEqual(after);
       expect(result.title).toBe('Current time');
     });
   });
@@ -95,14 +95,14 @@ describe('convertTime', () => {
   });
 
   describe('output shape', () => {
-    it('returns a momentDate, time, timezone, and title', () => {
+    it('returns a dateTime, time, timezone, and title', () => {
       const result = convertTime(1700000000);
       expect(result).toMatchObject({
         time: 1700000000,
         timezone: UTC,
         title: 'Converted time',
       });
-      expect(result.momentDate).toBeDefined();
+      expect(result.dateTime).toBeDefined();
     });
 
     it('returns a numeric timestamp as time when input is falsy', () => {

@@ -15,16 +15,16 @@ const useConversion = () => {
   const [data, setData] = useState<IConversion>({
     time: NOW,
     timezone: UTC,
-    momentDate: dayjs(),
+    dateTime: dayjs(),
     title: '',
   });
 
   useEffect(() => {
     const { time, timezone: convertTimezone } = conversion || ({} as IFormData);
-    const { momentDate, time: convertedTime, timezone, error, warning, title } =
+    const { dateTime, time: convertedTime, timezone, error, warning, title } =
       convertTime(time, convertTimezone);
 
-    setData({ momentDate, time: convertedTime, timezone, error, warning, title });
+    setData({ dateTime, time: convertedTime, timezone, error, warning, title });
   }, [conversion]);
 
   return { data, setConversion };

@@ -4,15 +4,15 @@ import { IConversion } from '../types';
 export const getRequestUrl = ({
   time,
   timezone,
-  momentDate,
+  dateTime,
 }: IConversion): string => {
   const currentUrl = new URL(window.location.href);
 
   const add_params = {
     time:
-      (time as string).toLowerCase() === NOW || !momentDate
+      (time as string).toLowerCase() === NOW || !dateTime
         ? NOW
-        : momentDate.unix().toString(),
+        : dateTime.unix().toString(),
     timezone: timezone || '',
   };
   const new_params = new URLSearchParams(Object.entries(add_params)).toString();

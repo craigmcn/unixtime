@@ -6,7 +6,7 @@ import { UTC } from '../../lib/constants';
 
 // 1700000000 = 2023-11-14 22:13:20 UTC
 const baseData = {
-  momentDate: dayjs.unix(1700000000),
+  dateTime: dayjs.unix(1700000000),
   time: '1700000000',
   timezone: UTC,
   title: 'Converted time',

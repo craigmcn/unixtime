@@ -5,30 +5,30 @@ import { NOW } from '../constants';
 
 // jsdom is configured with url: 'http://localhost/' in vitest.config.ts
 
-const momentDate = dayjs.unix(1700000000);
+const dateTime = dayjs.unix(1700000000);
 
 describe('getRequestUrl', () => {
   it('returns a URL with time and timezone query params', () => {
     const url = getRequestUrl({
       time: '1700000000',
       timezone: 'UTC',
-      momentDate,
+      dateTime,
     });
     expect(url).toContain('time=1700000000');
     expect(url).toContain('timezone=UTC');
   });
 
-  it('uses the unix timestamp from momentDate as the time param', () => {
+  it('uses the unix timestamp from dateTime as the time param', () => {
     const url = getRequestUrl({
       time: 'anything',
       timezone: 'UTC',
-      momentDate,
+      dateTime,
     });
-    expect(url).toContain(`time=${momentDate.unix()}`);
+    expect(url).toContain(`time=${dateTime.unix()}`);
   });
 
   it(`uses "${NOW}" when time is the NOW constant`, () => {
-    const url = getRequestUrl({ time: NOW, timezone: 'UTC', momentDate });
+    const url = getRequestUrl({ time: NOW, timezone: 'UTC', dateTime });
     expect(url).toContain(`time=${NOW}`);
     expect(url).not.toContain('time=1700000000');
   });
@@ -37,13 +37,13 @@ describe('getRequestUrl', () => {
     const url = getRequestUrl({
       time: '1700000000',
       timezone: 'UTC',
-      momentDate,
+      dateTime,
     });
     expect(url).toMatch(/^http:\/\/localhost\//);
   });
 
   it('omits timezone from params when empty', () => {
-    const url = getRequestUrl({ time: '1700000000', timezone: '', momentDate });
+    const url = getRequestUrl({ time: '1700000000', timezone: '', dateTime });
     expect(url).toContain('timezone=');
   });
 });
