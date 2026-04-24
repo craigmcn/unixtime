@@ -12,18 +12,19 @@ yarn preview      # Preview the production build locally
 yarn lint         # ESLint with auto-fix on src/
 ```
 
-**Tests:** Vitest + Testing Library. Run `yarn test` (watch) or `yarn test:run` (single pass).
+**Tests:** Vitest + Testing Library. Run `yarn test` (watch), `yarn test:run` (single pass), or `yarn coverage` (coverage report).
 - Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
-- Component tests: `src/components/Shared/Alert.test.tsx`, `src/components/Shared/Button.test.tsx`, `src/components/Converter/Form.test.tsx`, `src/components/Converter/Result.test.tsx`
+- Hook tests: `src/lib/hooks/useConversion.test.ts`, `src/lib/hooks/useCopyToClipboard.test.ts`
+- Component tests: `src/components/Header/Header.test.tsx`, `src/components/Shared/Alert.test.tsx`, `src/components/Shared/Button.test.tsx`, `src/components/Converter/Form.test.tsx`, `src/components/Converter/Result.test.tsx`
 
 ## Architecture
 
-This is a single-page React + TypeScript app built with Vite 8 + SWC. It converts a Unix timestamp or natural-language date string into multiple date-time formats, with optional timezone support.
+This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-react`, no SWC plugins). It converts a Unix timestamp or natural-language date string into multiple date-time formats, with optional timezone support.
 
 **Data flow:**
 1. `Form` collects a time string and optional timezone from the user.
 2. `App` holds the `useConversion` hook, which calls `convertTime()` whenever the form submits and stores the result in state.
-3. `Result` renders the `IConversion` data (timestamp, UTC, local timezone, ISO 8601, RFC 2822).
+3. `Result` renders the `IConversion` data (`dateTime`, `time`, `timezone`, ISO 8601, RFC 2822).
 
 **Core logic — `src/lib/functions/convertTime.ts`:**
 - If the input is numeric, it detects seconds/milliseconds/microseconds/nanoseconds by magnitude and creates a `dayjs.unix()` date.
@@ -34,7 +35,7 @@ This is a single-page React + TypeScript app built with Vite 8 + SWC. It convert
 
 **URL state:** `useConversion` reads `?time=` and `?timezone=` query params on mount as initial values. `Result` exposes a "Repeat" link and a "Copy" button that encode the current conversion as a shareable URL via `getRequestUrl()`.
 
-**Styling:** AlbertCSS v0.15.0, served via CDN (`https://albertcss.craigmcn.com/v0.15.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown uses `react-select-container` / `react-select` class prefixes for custom styling. Custom project styles live in `src/index.css`.
+**Styling:** AlbertCSS v0.15.0, served via CDN (`https://albertcss.craigmcn.com/v0.15.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. Custom project styles live in `src/index.css`.
 
 **CSS conventions:**
 - Use modern CSS nesting with `&` and nested `@media` — no preprocessor (PostCSS/Sass/Tailwind removed).
