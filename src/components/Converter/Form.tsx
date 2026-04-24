@@ -26,7 +26,7 @@ const Form = ({ setConversion }: IFormProps) => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setConversion({
-        time: e.currentTarget.time.value,
+        time: timeRef.current?.value || '',
         timezone: (timezoneRef.current?.props.value as IValue)?.value || '',
       });
 
@@ -53,6 +53,7 @@ const Form = ({ setConversion }: IFormProps) => {
           </label>
           <input
             id="time"
+            name="time"
             ref={timeRef}
             className="form__control form__control--lg"
             type="text"

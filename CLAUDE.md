@@ -12,7 +12,9 @@ yarn preview      # Preview the production build locally
 yarn lint         # ESLint with auto-fix on src/
 ```
 
-There are no tests.
+**Tests:** Vitest + Testing Library. Run `yarn test` (watch) or `yarn test:run` (single pass).
+- Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
+- Component tests: `src/components/Shared/Alert.test.tsx`, `src/components/Shared/Button.test.tsx`, `src/components/Converter/Form.test.tsx`, `src/components/Converter/Result.test.tsx`
 
 ## Architecture
 
