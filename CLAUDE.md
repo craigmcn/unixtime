@@ -46,11 +46,11 @@ This is a single-page React + TypeScript app built with Vite 8 + SWC. It convert
 - `vite.config.netlify.ts` — outputs to both `netlify/` and `netlify/unixtime/` in one build, for deployment at root and under a subdirectory simultaneously.
 - Both configs use `@vitejs/plugin-react` and a `manualChunks` function (Rolldown/Vite 8 requires a function, not an object) that puts React, FontAwesome, and Day.js into a `vendor` chunk.
 
-**ESLint conventions to follow:**
+**ESLint + Prettier conventions to follow:**
 - Config: `eslint.config.mjs` (ESLint 9 flat config). No `.eslintrc`.
-- Single quotes, semicolons required, 2-space indentation.
-- Interfaces must be prefixed with `I` (e.g. `IFormData`).
-- `react/jsx-no-bind` is enabled — don't pass inline arrow functions as JSX props; use `useCallback`.
-- `comma-dangle` requires trailing commas in multiline structures.
-- `react/react-in-jsx-scope` is off — do not add `import React from 'react'` to new files.
-- `@typescript-eslint/no-explicit-any` is a warning — avoid `any`.
+- Formatting is handled by Prettier (`.prettierrc`): single quotes, semi-colons, tab width (i.e., 2 spaces). Run `yarn format` to apply.
+- ESLint handles code quality only — recommended rules from `@typescript-eslint`, `eslint-plugin-react`, and `eslint-plugin-react-hooks`, plus:
+  - Interfaces must be prefixed with `I` (e.g. `IFormData`).
+  - `react/jsx-no-bind` is enabled — don't pass inline arrow functions as JSX props; use `useCallback`.
+  - `react/react-in-jsx-scope` is off — do not add `import React from 'react'` to new files.
+  - `@typescript-eslint/no-explicit-any` is a warning — avoid `any`.

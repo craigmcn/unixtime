@@ -10,25 +10,32 @@ interface IButtonProps {
   onClick?: (e?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 }
 
-const Button = ({ children, className, type = 'button', href, title, ...props }: IButtonProps) => {
+const Button = ({
+  children,
+  className,
+  type = 'button',
+  href,
+  title,
+  ...props
+}: IButtonProps) => {
   return (
     <>
       {!href && (
         <button
-          className={ classNames('button', className) }
-          type={ type }
-          title={ title }
-          { ...props }
+          className={classNames('button', className)}
+          type={type}
+          title={title}
+          {...props}
         >
           {children}
         </button>
       )}
       {href && (
         <a
-          className={ classNames('button', className) }
-          href={ href }
-          title={ title }
-          { ...props }
+          className={classNames('button', className)}
+          href={href}
+          title={title}
+          {...props}
         >
           {children}
         </a>

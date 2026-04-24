@@ -1,8 +1,8 @@
 // From https://usehooks-ts.com/react-hook/use-copy-to-clipboard
 import { useState } from 'react';
 
-type CopiedValue = string | null
-type CopyFn = (text: string) => Promise<boolean> // Return success
+type CopiedValue = string | null;
+type CopyFn = (text: string) => Promise<boolean>; // Return success
 
 function useCopyToClipboard(): [CopiedValue, CopyFn] {
   const [copiedText, setCopiedText] = useState<CopiedValue>(null);

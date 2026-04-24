@@ -4,6 +4,7 @@ import tsParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   js.configs.recommended,
@@ -25,19 +26,10 @@ export default [
       react: { version: 'detect' },
     },
     rules: {
-      // — Style
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
-      'no-multi-spaces': 'error',
-      'no-trailing-spaces': 'error',
-      'no-console': 'warn',
-      'comma-dangle': ['error', 'always-multiline'],
-      'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-
-      // — TypeScript
+      // TypeScript recommended + project overrides
       ...tsPlugin.configs.recommended.rules,
-      '@typescript-eslint/indent': 'off',
-      '@typescript-eslint/member-ordering': 'error',
+      '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/naming-convention': [
         'error',
         {
@@ -46,31 +38,19 @@ export default [
           custom: { regex: '^I[A-Z]', match: true },
         },
       ],
-      '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
-      '@typescript-eslint/no-explicit-any': 'warn',
 
-      // — React
+      // React recommended + project overrides
+      ...reactPlugin.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
-      'react/jsx-curly-spacing': [2, 'always'],
-      'react/jsx-indent': ['error', 2],
-      'react/jsx-no-bind': 'error',
-      'react/jsx-wrap-multilines': ['error', {
-        declaration: 'parens-new-line',
-        assignment: 'parens-new-line',
-        return: 'parens-new-line',
-        arrow: 'parens-new-line',
-        condition: 'ignore',
-        logical: 'ignore',
-        prop: 'parens-new-line',
-      }],
-      'react/jsx-props-no-multi-spaces': 'error',
-      'react/jsx-pascal-case': 'error',
-      'react/jsx-tag-spacing': 'error',
       'react/prop-types': 'off',
+      'react/jsx-no-bind': 'error',
+      'react/jsx-pascal-case': 'error',
 
-      // — React Hooks
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
+      // React Hooks recommended
+      ...reactHooks.configs.recommended.rules,
+
+      'no-console': 'warn',
     },
   },
+  eslintConfigPrettier,
 ];

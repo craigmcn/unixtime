@@ -1,7 +1,17 @@
 import { useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo, faRedo, faCopy } from '@fortawesome/sharp-duotone-light-svg-icons';
-import { DOCUMENT_TITLE, LONG_DATE, RFC_2822, SHORT_DATE, UTC } from '../../lib/constants';
+import {
+  faCircleInfo,
+  faRedo,
+  faCopy,
+} from '@fortawesome/sharp-duotone-light-svg-icons';
+import {
+  DOCUMENT_TITLE,
+  LONG_DATE,
+  RFC_2822,
+  SHORT_DATE,
+  UTC,
+} from '../../lib/constants';
 import { IConversion } from '../../lib/types';
 import Alert from '../Shared/Alert';
 import Section from '../Shared/Section';
@@ -15,7 +25,7 @@ interface IResultProps {
 
 const Result = ({ data }: IResultProps) => {
   const { momentDate, time, timezone, error, warning, title } = data;
-  const repeatUrl = getRequestUrl({time, timezone, momentDate});
+  const repeatUrl = getRequestUrl({ time, timezone, momentDate });
 
   const [, copy] = useCopyToClipboard();
   const handleCopy = useCallback(() => {
@@ -23,7 +33,10 @@ const Result = ({ data }: IResultProps) => {
   }, [repeatUrl, copy]);
 
   useEffect(() => {
-    const documentTime = (!timezone || timezone === UTC) ? momentDate.utc() : momentDate.tz(timezone);
+    const documentTime =
+      !timezone || timezone === UTC
+        ? momentDate.utc()
+        : momentDate.tz(timezone);
     document.title = documentTime.format(LONG_DATE) + ' - ' + DOCUMENT_TITLE;
   }, [momentDate, timezone]);
 
@@ -35,9 +48,7 @@ const Result = ({ data }: IResultProps) => {
 
       <div className="card__body">
         {(error || warning) && (
-          <Alert type={ error ? 'error' : 'warning' }>
-            {error || warning}
-          </Alert>
+          <Alert type={error ? 'error' : 'warning'}>{error || warning}</Alert>
         )}
         <dl id="results">
           <dt className="fw-bold">
@@ -48,7 +59,7 @@ const Result = ({ data }: IResultProps) => {
               target="_blank"
               rel="noreferrer"
             >
-              <FontAwesomeIcon icon={ faCircleInfo } />
+              <FontAwesomeIcon icon={faCircleInfo} />
               <span className="visually-hidden">info</span>
             </a>
           </dt>
@@ -90,20 +101,20 @@ const Result = ({ data }: IResultProps) => {
         <div className="d-flex gap-1 mt-4">
           <Button
             className="button--sm"
-            href={ repeatUrl }
+            href={repeatUrl}
             title="Repeat this request"
           >
-            <FontAwesomeIcon icon={ faRedo } size="xs" className="me-2" />
+            <FontAwesomeIcon icon={faRedo} size="xs" className="me-2" />
             Repeat
           </Button>
 
           {navigator?.clipboard && (
             <Button
               className="button--sm"
-              title={ `Copy request ${repeatUrl}` }
-              onClick={ handleCopy }
+              title={`Copy request ${repeatUrl}`}
+              onClick={handleCopy}
             >
-              <FontAwesomeIcon icon={ faCopy } size="xs" className="me-2" />
+              <FontAwesomeIcon icon={faCopy} size="xs" className="me-2" />
               Copy <span className="visually-hidden">{`${repeatUrl}`}</span>
             </Button>
           )}
@@ -111,7 +122,6 @@ const Result = ({ data }: IResultProps) => {
       </div>
     </Section>
   );
-
 };
 
 export default Result;

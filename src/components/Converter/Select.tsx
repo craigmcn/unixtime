@@ -1,12 +1,15 @@
+import { type Ref } from 'react';
 import ReactSelect, { SelectInstance, StylesConfig } from 'react-select';
 import { IValue } from '../../lib/types';
 
+type ISize = 'sm' | 'md' | 'lg';
+
 interface ISelectProps {
   id?: string;
-  innerRef?: React.Ref<SelectInstance>;
+  innerRef?: Ref<SelectInstance>;
   options: IValue[];
   isClearable?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: ISize;
   placeholder?: string;
 }
 
@@ -16,15 +19,18 @@ const selectStyle: StylesConfig = {
     marginBottom: '0.25rem',
   }),
   control: (provided, state) => {
-    const { size } = state.selectProps as any; // size is a custom prop, so we need to assert the type
-    const fontSize = size === 'lg' ? '1.25rem' : size === 'sm' ? '0.875rem' : '1rem';
+    const { size } = state.selectProps as { size?: ISize };
+    const fontSize =
+      size === 'lg' ? '1.25rem' : size === 'sm' ? '0.875rem' : '1rem';
     const borderRadius = size === 'lg' ? '0.25rem' : '0.125rem';
 
     return {
       ...provided,
       borderColor: 'var(--grey600)',
       borderRadius,
-      boxShadow: state.isFocused ? '0 0 0 0.2rem var(--focusShadow);' : provided.boxShadow,
+      boxShadow: state.isFocused
+        ? '0 0 0 0.2rem var(--focusShadow);'
+        : provided.boxShadow,
       '&:hover': {
         borderColor: 'var(--grey600)',
       },
@@ -50,14 +56,8 @@ const selectStyle: StylesConfig = {
   }),
 };
 
-const Select = ({innerRef, ...props}: ISelectProps) => {
-  return (
-    <ReactSelect
-      ref={innerRef}
-      styles={selectStyle}
-      {...props}
-    />
-  );
-}
+const Select = ({ innerRef, ...props }: ISelectProps) => {
+  return <ReactSelect ref={innerRef} styles={selectStyle} {...props} />;
+};
 
 export default Select;

@@ -11,10 +11,10 @@ export interface IValue {
 import type { Dayjs } from 'dayjs';
 
 export interface IConversion {
-  momentDate: Dayjs,
-  time: number | string,
-  timezone?: string,
-  error?: string,
-  warning?: string,
+  momentDate: Dayjs;
+  time: number | string;
+  timezone?: string;
+  error?: string;
+  warning?: string;
   title?: string;
 }

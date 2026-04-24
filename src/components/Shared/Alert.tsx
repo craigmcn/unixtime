@@ -1,7 +1,10 @@
 import type { ReactNode } from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation, faTriangleExclamation } from '@fortawesome/sharp-duotone-light-svg-icons';
+import {
+  faCircleExclamation,
+  faTriangleExclamation,
+} from '@fortawesome/sharp-duotone-light-svg-icons';
 
 interface IAlertProps {
   children: ReactNode;
@@ -20,8 +23,10 @@ const icon = {
 
 const Alert = ({ type = 'error', children }: IAlertProps) => {
   return (
-    <div className={ classNames('alert alert--sm mb-4', alertClass[type]) }>
-      <div className="alert__icon"><FontAwesomeIcon icon={ icon[type] } size="sm" /></div>
+    <div className={classNames('alert alert--sm mb-4', alertClass[type])}>
+      <div className="alert__icon">
+        <FontAwesomeIcon icon={icon[type]} size="sm" />
+      </div>
       <div className="alert__text">{children}</div>
     </div>
   );

@@ -10,9 +10,7 @@ const Main = ({ children, title }: IMainProps) => {
     <main className="main main--fixed">
       {!!title && <h2 className="mt-5 mb-4">{title}</h2>}
 
-      <div className="flex flex--grid">
-        {children}
-      </div>
+      <div className="flex flex--grid">{children}</div>
     </main>
   );
 };

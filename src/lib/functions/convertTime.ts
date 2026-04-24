@@ -3,7 +3,10 @@ import dayjs from '../dayjs';
 import { IConversion } from '../types';
 import { NOW, UTC } from '../constants';
 
-export const convertTime = (submitTime: number | string, submitTimezone?: string): IConversion => {
+export const convertTime = (
+  submitTime: number | string,
+  submitTimezone?: string,
+): IConversion => {
   const defaultDate = new Date();
   let time;
   let numericTime;
@@ -23,7 +26,10 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
     title = 'Current time';
   }
 
-  if (!timezone || (!Intl.supportedValuesOf('timeZone').includes(timezone) && timezone !== UTC)) {
+  if (
+    !timezone ||
+    (!Intl.supportedValuesOf('timeZone').includes(timezone) && timezone !== UTC)
+  ) {
     warning = timezone ? 'Invalid timezone provided. Switched to UTC.' : '';
     timezone = UTC;
   }
@@ -52,7 +58,7 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
         // returned minutes west, so negate before applying to the unix calc.
         const timezoneOffset = -dayjs(dateUtc).tz(timezone).utcOffset();
         momentDate = dayjs.unix(
-          momentDate.unix() + (timeIsNow ? 0 : (timezoneOffset * 60)),
+          momentDate.unix() + (timeIsNow ? 0 : timezoneOffset * 60),
         );
       }
     } else {

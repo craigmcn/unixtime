@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from 'react';
 import { SelectInstance } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/sharp-duotone-light-svg-icons';
@@ -16,31 +22,41 @@ const Form = ({ setConversion }: IFormProps) => {
   const timezoneRef = useRef<SelectInstance>(null);
   const [options, setOptions] = useState<IValue[]>([]);
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setConversion({ time: e.currentTarget.time.value, timezone: (timezoneRef.current?.props.value as IValue)?.value || '' });
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setConversion({
+        time: e.currentTarget.time.value,
+        timezone: (timezoneRef.current?.props.value as IValue)?.value || '',
+      });
 
-    if (timeRef.current) {
-      timeRef.current.value = '';
-      timeRef.current?.focus();
-    }
-  }, [setConversion]);
+      if (timeRef.current) {
+        timeRef.current.value = '';
+        timeRef.current?.focus();
+      }
+    },
+    [setConversion],
+  );
 
   useEffect(() => {
-    import('../../data/timezones.json').then(({default: options}) => setOptions(options));
+    import('../../data/timezones.json').then(({ default: options }) =>
+      setOptions(options),
+    );
   }, []);
 
   return (
     <Section>
-      <form autoComplete="off" onSubmit={ handleSubmit }>
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="form__group">
-          <label htmlFor="time" className="visually-hidden">Date and time or timestamp</label>
+          <label htmlFor="time" className="visually-hidden">
+            Date and time or timestamp
+          </label>
           <input
             id="time"
-            ref={ timeRef }
+            ref={timeRef}
             className="form__control form__control--lg"
             type="text"
-            maxLength={ 64 }
+            maxLength={64}
             placeholder="Enter a date and time or a timestamp"
             required
             autoFocus
@@ -48,11 +64,13 @@ const Form = ({ setConversion }: IFormProps) => {
         </div>
 
         <div className="form__group">
-          <label htmlFor="timezone" className="visually-hidden">Time zone <small>(optional)</small></label>
+          <label htmlFor="timezone" className="visually-hidden">
+            Time zone <small>(optional)</small>
+          </label>
           <Select
             id="timezone"
-            innerRef={ timezoneRef }
-            options={ options }
+            innerRef={timezoneRef}
+            options={options}
             isClearable
             size="lg"
             placeholder="Enter a time zone (optional)"
@@ -60,7 +78,7 @@ const Form = ({ setConversion }: IFormProps) => {
         </div>
 
         <Button className="button--primary button--lg" type="submit">
-          <FontAwesomeIcon icon={ faClock } className="me-2" />
+          <FontAwesomeIcon icon={faClock} className="me-2" />
           Convert
         </Button>
       </form>
