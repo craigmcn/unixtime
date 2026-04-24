@@ -9,26 +9,21 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor': [
-            'node_modules/react/index.js',
-            'node_modules/react-dom/index.js',
-            'node_modules/@fortawesome/react-fontawesome/index.js',
-            'node_modules/@fortawesome/fontawesome-svg-core/index.js',
-            'node_modules/@fortawesome/pro-duotone-svg-icons/index.js',
-            'node_modules/@fortawesome/pro-light-svg-icons/index.js',
+            'react',
+            'react-dom',
+            '@fortawesome/react-fontawesome',
+            '@fortawesome/fontawesome-svg-core',
+            '@fortawesome/sharp-duotone-light-svg-icons',
           ],
           'moment': [
-            'node_modules/moment/moment.js',
-            'node_modules/moment-timezone/index.js',
+            'moment',
+            'moment-timezone',
           ],
         },
       },
     },
   },
-  plugins: [react({
-    babel: {
-      plugins: ['babel-plugin-typescript-to-proptypes'],
-    },
-  })],
+  plugins: [react()],
   server: {
     port: 3120,
   },

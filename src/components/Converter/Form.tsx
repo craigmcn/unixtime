@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Select, { SelectInstance } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/pro-duotone-svg-icons';
+import { faClock } from '@fortawesome/sharp-duotone-light-svg-icons';
 import { IFormData, IValue } from '../../lib/types';
 import Section from '../Shared/Section';
 import Button from '../Shared/Button';

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation, faTriangleExclamation } from '@fortawesome/pro-light-svg-icons';
+import { faCircleExclamation, faTriangleExclamation } from '@fortawesome/sharp-duotone-light-svg-icons';
 
 interface IAlertProps {
   children: React.ReactNode;

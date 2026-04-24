@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo, faRedo, faCopy } from '@fortawesome/pro-light-svg-icons';
+import { faCircleInfo, faRedo, faCopy } from '@fortawesome/sharp-duotone-light-svg-icons';
 import { DOCUMENT_TITLE, LONG_DATE, RFC_2822, SHORT_DATE, UTC } from '../../lib/constants';
 import { IConversion } from '../../lib/types';
 import Alert from '../Shared/Alert';
