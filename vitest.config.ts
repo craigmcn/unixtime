@@ -9,5 +9,11 @@ export default defineConfig({
       jsdom: { url: "http://localhost/" },
     },
     setupFiles: ["src/test/setup.ts"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/test/**", "src/vite-env.d.ts"],
+    },
   },
 });
