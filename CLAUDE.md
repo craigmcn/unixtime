@@ -44,7 +44,7 @@ This is a single-page React + TypeScript app built with Vite 8 + SWC. It convert
 **Two build configs:**
 - `vite.config.ts` — standard build to `dist/`, relative base (`./`).
 - `vite.config.netlify.ts` — outputs to both `netlify/` and `netlify/unixtime/` in one build, for deployment at root and under a subdirectory simultaneously.
-- Both configs use `@vitejs/plugin-react-swc` and a `manualChunks` function (Rolldown/Vite 8 requires a function, not an object) that puts React, FontAwesome, and Day.js into a `vendor` chunk.
+- Both configs use `@vitejs/plugin-react` and a `manualChunks` function (Rolldown/Vite 8 requires a function, not an object) that puts React, FontAwesome, and Day.js into a `vendor` chunk.
 
 **ESLint conventions to follow:**
 - Config: `eslint.config.mjs` (ESLint 9 flat config). No `.eslintrc`.

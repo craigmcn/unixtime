@@ -1,7 +1,7 @@
 {
   "name": "unixtime",
   "private": true,
-  "version": "2.0.2",
+  "version": "2.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -27,7 +27,7 @@
     "@types/react-dom": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^8.59.0",
     "@typescript-eslint/parser": "^8.59.0",
-    "@vitejs/plugin-react-swc": "^4.3.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9.39.4",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^5.0.0",
