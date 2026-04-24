@@ -1,14 +1,16 @@
 import * as chrono from 'chrono-node';
-import moment from 'moment';
-import 'moment-timezone';
+import dayjs from '../dayjs';
 import { IConversion } from '../types';
 import { NOW, UTC } from '../constants';
 
-export const convertTime = (submitTime: number | string, submitTimezone?: string): IConversion => {
+export const convertTime = (
+  submitTime: number | string,
+  submitTimezone?: string,
+): IConversion => {
   const defaultDate = new Date();
   let time;
   let numericTime;
-  let momentDate;
+  let dateTime;
   let chronoTime;
   let error;
   let warning;
@@ -24,7 +26,10 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
     title = 'Current time';
   }
 
-  if (!timezone || !moment.tz.zone(timezone)) {
+  if (
+    !timezone ||
+    (!Intl.supportedValuesOf('timeZone').includes(timezone) && timezone !== UTC)
+  ) {
     warning = timezone ? 'Invalid timezone provided. Switched to UTC.' : '';
     timezone = UTC;
   }
@@ -38,7 +43,7 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
       forwardDate: true,
     });
     if (chronoTime[0]) {
-      momentDate = moment(chronoTime[0].start.date());
+      dateTime = dayjs(chronoTime[0].start.date());
       if (timezone && timezone !== UTC) {
         const dateUtc = Date.UTC(
           chronoTime[0].start.get('year') || defaultDate.getFullYear(),
@@ -49,23 +54,25 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
           chronoTime[0].start.get('minute') || 0,
           chronoTime[0].start.get('second') || 0,
         );
-        const timezoneOffset = moment.tz.zone(timezone)?.parse(dateUtc);
-        momentDate = moment.unix(
-          momentDate.unix() + (timeIsNow ? 0 : ((timezoneOffset || 0) * 60))
+        // utcOffset() returns minutes east of UTC; moment-timezone's parse()
+        // returned minutes west, so negate before applying to the unix calc.
+        const timezoneOffset = -dayjs(dateUtc).tz(timezone).utcOffset();
+        dateTime = dayjs.unix(
+          dateTime.unix() + (timeIsNow ? 0 : timezoneOffset * 60),
         );
       }
     } else {
       error = 'Invalid time provided. Switched to current time.';
-      momentDate = moment().tz(timezone || UTC);
+      dateTime = dayjs().tz(timezone || UTC);
     }
   } else {
     if (numericTime >= 1e10 && numericTime < 1e13) numericTime /= 1e3; // milliseconds
     if (numericTime >= 1e13 && numericTime < 1e16) numericTime /= 1e6; // microseconds
     if (numericTime >= 1e16 && numericTime < 1e19) numericTime /= 1e9; // nanoseconds
-    momentDate = moment.unix(numericTime);
+    dateTime = dayjs.unix(numericTime);
   }
   return {
-    momentDate,
+    dateTime,
     time: time || NOW,
     timezone,
     error,

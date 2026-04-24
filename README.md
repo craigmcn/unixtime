@@ -1,18 +1,43 @@
-# unixtime
+# Unix Timestamp Converter
 
 [craigmcn.com/unixtime](https://www.craigmcn.com/unixtime/)
 
-A simple unix timestamp converter
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cf023f65-b3c6-42d3-95d4-0cde937a5d38/deploy-status)](https://app.netlify.com/sites/keen-haibt-ecf9f4/deploys)
+[![Test](https://github.com/craigmcn/unixtime/actions/workflows/test.yml/badge.svg)](https://github.com/craigmcn/unixtime/actions/workflows/test.yml)
 
-Based on unixtimestamp.com, unixtime takes a string and parses it as a 
-Unix timestamp or a date-time string and returns a small collection of 
-date-time representations for the date-time and optional timezone 
-provided. 
+Converts a Unix timestamp or natural-language date string into UTC, local timezone, ISO 8601, and RFC 2822 formats, with optional timezone support. Results are shareable via query string (`?time=&timezone=`).
 
-# Version 2
+## Stack
 
-Version 2 is a complete rewrite using [Vite](https://vitejs.dev/guide/),
-[React](https://reactjs.org/docs/getting-started.html) and
-[Typescript](https://www.typescriptlang.org/docs/handbook/2/basic-types.html).
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) built with [Vite](https://vitejs.dev/)
+- [Day.js](https://day.js.org/) for date parsing and formatting
+- [chrono-node](https://github.com/wanasit/chrono) for natural-language date parsing
+- [AlbertCSS](https://albertcss.craigmcn.com/) for styling
+
+## Development
+
+```bash
+yarn install
+yarn dev        # dev server at http://localhost:3120
+yarn build      # type-check + build to dist/
+yarn lint       # ESLint with auto-fix
+yarn format     # Prettier
+yarn coverage   # Vitest + coverage report
+```
+
+## Testing
+
+Vitest + Testing Library. 57 tests across unit, hook, and component tests.
+
+```bash
+yarn test       # watch mode
+yarn test:run   # single pass
+yarn coverage   # single pass with coverage report
+```
+
+## Deployment
+
+Deployed on Netlify. Two build configs are available:
+
+- `vite.config.ts` — standard build to `dist/`
+- `vite.config.netlify.ts` — builds to both `netlify/` and `netlify/unixtime/` for deployment at root and under a subdirectory simultaneously

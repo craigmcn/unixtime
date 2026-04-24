@@ -13,8 +13,8 @@ function App() {
       <Header />
 
       <Main title="Convert a date and time">
-        <Form setConversion={ setConversion } />
-        <Result data={ data } />
+        <Form setConversion={setConversion} />
+        <Result data={data} />
       </Main>
     </>
   );
