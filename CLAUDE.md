@@ -16,7 +16,7 @@ There are no tests.
 
 ## Architecture
 
-This is a single-page React + TypeScript app built with Vite. It converts a Unix timestamp or natural-language date string into multiple date-time formats, with optional timezone support.
+This is a single-page React + TypeScript app built with Vite 8 + SWC. It converts a Unix timestamp or natural-language date string into multiple date-time formats, with optional timezone support.
 
 **Data flow:**
 1. `Form` collects a time string and optional timezone from the user.
@@ -24,10 +24,11 @@ This is a single-page React + TypeScript app built with Vite. It converts a Unix
 3. `Result` renders the `IConversion` data (timestamp, UTC, local timezone, ISO 8601, RFC 2822).
 
 **Core logic — `src/lib/functions/convertTime.ts`:**
-- If the input is numeric, it detects seconds/milliseconds/microseconds/nanoseconds by magnitude and creates a `moment.unix()` date.
-- If the input is non-numeric, it runs `chrono-node` to parse natural-language dates. Timezone offsets are applied manually by reading `moment-timezone`'s UTC offset for the selected zone.
+- If the input is numeric, it detects seconds/milliseconds/microseconds/nanoseconds by magnitude and creates a `dayjs.unix()` date.
+- If the input is non-numeric, it runs `chrono-node` to parse natural-language dates. Timezone offsets are applied manually using `dayjs(utcMs).tz(timezone).utcOffset()` (minutes east of UTC — negated before applying, since the original Moment API returned minutes west).
+- Timezone validation uses the native `Intl.supportedValuesOf('timeZone')` — no library needed.
 - The string `"now"` (and variants like `"now()"`) is treated as the current time with no offset adjustment.
-> **Planned (Step 4):** Replace `moment` + `moment-timezone` with `dayjs` (plugins: `utc`, `timezone`, `advancedFormat`). Plugin setup in `src/lib/dayjs.ts`. Timezone validation via native `Intl.supportedValuesOf('timeZone')`. `moment.tz.zone(tz)?.parse(utcMs)` (minutes **west**) → `dayjs(utcMs).tz(tz).utcOffset()` (minutes **east** — negate in the unix offset calc). `momentDate.toISOString(true)` → `dayjs.format('YYYY-MM-DDTHH:mm:ss.SSSZ')`.
+- Day.js plugin setup (utc, timezone, advancedFormat) lives in `src/lib/dayjs.ts` — always import from there, not directly from `dayjs`.
 
 **URL state:** `useConversion` reads `?time=` and `?timezone=` query params on mount as initial values. `Result` exposes a "Repeat" link and a "Copy" button that encode the current conversion as a shareable URL via `getRequestUrl()`.
 
@@ -39,10 +40,13 @@ This is a single-page React + TypeScript app built with Vite. It converts a Unix
 **Two build configs:**
 - `vite.config.ts` — standard build to `dist/`, relative base (`./`).
 - `vite.config.netlify.ts` — outputs to both `netlify/` and `netlify/unixtime/` in one build, for deployment at root and under a subdirectory simultaneously.
+- Both configs use `@vitejs/plugin-react-swc` and a `manualChunks` function (Rolldown/Vite 8 requires a function, not an object) that puts React, FontAwesome, and Day.js into a `vendor` chunk.
 
 **ESLint conventions to follow:**
+- Config: `eslint.config.mjs` (ESLint 9 flat config). No `.eslintrc`.
 - Single quotes, semicolons required, 2-space indentation.
 - Interfaces must be prefixed with `I` (e.g. `IFormData`).
 - `react/jsx-no-bind` is enabled — don't pass inline arrow functions as JSX props; use `useCallback`.
 - `comma-dangle` requires trailing commas in multiline structures.
-> **Planned (Step 5):** Migrate `.eslintrc` (legacy JSON) → `eslint.config.mjs` (ESLint 9 flat config). Drop `@typescript-eslint/indent` (unreliable on TSX). Add `react/react-in-jsx-scope: off` (React 17+ JSX transform) and `@typescript-eslint/no-explicit-any: warn`.
+- `react/react-in-jsx-scope` is off — do not add `import React from 'react'` to new files.
+- `@typescript-eslint/no-explicit-any` is a warning — avoid `any`.

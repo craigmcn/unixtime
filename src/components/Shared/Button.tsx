@@ -17,7 +17,7 @@ const Button = ({ children, className, type = 'button', href, title, ...props }:
         <button
           className={ classNames(
             'flex items-center justify-center border rounded py-2 px-4',
-            className
+            className,
           ) }
           type={ type }
           title={ title }
@@ -30,7 +30,7 @@ const Button = ({ children, className, type = 'button', href, title, ...props }:
         <a
           className={ classNames(
             'flex items-center justify-center border rounded py-2 px-4',
-            className
+            className,
           ) }
           href={ href }
           title={ title }

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,15 +7,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor': [
-            'react',
-            'react-dom',
-            '@fortawesome/react-fontawesome',
-            '@fortawesome/fontawesome-svg-core',
-            '@fortawesome/sharp-duotone-light-svg-icons',
-          ],
-          'dayjs': ['dayjs'],
+        manualChunks(id) {
+          if (
+            id.includes('node_modules/react') ||
+            id.includes('node_modules/@fortawesome') ||
+            id.includes('node_modules/dayjs')
+          ) return 'vendor';
         },
       },
     },

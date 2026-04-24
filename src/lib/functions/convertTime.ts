@@ -52,7 +52,7 @@ export const convertTime = (submitTime: number | string, submitTimezone?: string
         // returned minutes west, so negate before applying to the unix calc.
         const timezoneOffset = -dayjs(dateUtc).tz(timezone).utcOffset();
         momentDate = dayjs.unix(
-          momentDate.unix() + (timeIsNow ? 0 : (timezoneOffset * 60))
+          momentDate.unix() + (timeIsNow ? 0 : (timezoneOffset * 60)),
         );
       }
     } else {
