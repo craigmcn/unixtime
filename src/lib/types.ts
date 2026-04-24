@@ -8,8 +8,10 @@ export interface IValue {
   label: string;
 }
 
+import type { Dayjs } from 'dayjs';
+
 export interface IConversion {
-  momentDate: moment.Moment,
+  momentDate: Dayjs,
   time: number | string,
   timezone?: string,
   error?: string,

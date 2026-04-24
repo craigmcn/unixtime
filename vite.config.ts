@@ -15,10 +15,7 @@ export default defineConfig({
             '@fortawesome/fontawesome-svg-core',
             '@fortawesome/sharp-duotone-light-svg-icons',
           ],
-          'moment': [
-            'moment',
-            'moment-timezone',
-          ],
+          'dayjs': ['dayjs'],
         },
       },
     },

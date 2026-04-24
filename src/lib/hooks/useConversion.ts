@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { IConversion, IFormData } from '../types';
 import { convertTime } from '../functions/convertTime';
 import { UTC, NOW } from '../constants';
-import moment from 'moment';
+import dayjs from '../dayjs';
 
 const useConversion = () => {
   const params = new URLSearchParams(window.location.search);
   const initialData = {time: params.get('time') || NOW, timezone: params.get('timezone') || UTC};
   const [conversion, setConversion] = useState<IFormData>(initialData);
-  const [data, setData] = useState<IConversion>({ ...initialData, momentDate: moment(), title: '' });
+  const [data, setData] = useState<IConversion>({ ...initialData, momentDate: dayjs(), title: '' });
 
   useEffect(() => {
     const { time, timezone: convertTimezone } = conversion || {} as IFormData;

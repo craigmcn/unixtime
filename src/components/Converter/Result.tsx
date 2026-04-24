@@ -89,7 +89,7 @@ const Result = ({ data }: IResultProps) => {
           )}
 
           <dt className="font-bold mt-2">ISO 8601</dt>
-          <dd>{momentDate?.toISOString(true)}</dd>
+          <dd>{momentDate?.format('YYYY-MM-DDTHH:mm:ss.SSSZ')}</dd>
           <dt className="font-bold mt-2">RFC 2822</dt>
           <dd>{momentDate?.format(RFC_2822)}</dd>
         </dl>
