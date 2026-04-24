@@ -6,7 +6,7 @@ type ISize = 'sm' | 'md' | 'lg';
 
 interface ISelectProps {
   id?: string;
-  innerRef?: Ref<SelectInstance>;
+  innerRef?: Ref<SelectInstance<IValue>>;
   options: IValue[];
   isClearable?: boolean;
   size?: ISize;
@@ -59,7 +59,7 @@ const Select = ({ innerRef, size, ...props }: ISelectProps) => {
     [size],
   );
 
-  return <ReactSelect ref={innerRef} styles={selectStyle} {...props} />;
+  return <ReactSelect<IValue> ref={innerRef} styles={selectStyle} {...props} />;
 };
 
 export default Select;

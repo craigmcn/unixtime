@@ -19,7 +19,7 @@ interface IFormProps {
 
 const Form = ({ setConversion }: IFormProps) => {
   const timeRef = useRef<HTMLInputElement>(null);
-  const timezoneRef = useRef<SelectInstance>(null);
+  const timezoneRef = useRef<SelectInstance<IValue>>(null);
   const [options, setOptions] = useState<IValue[]>([]);
 
   const handleSubmit = useCallback(
