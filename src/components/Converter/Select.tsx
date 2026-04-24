@@ -29,7 +29,7 @@ const selectStyle: StylesConfig = {
       borderColor: 'var(--grey600)',
       borderRadius,
       boxShadow: state.isFocused
-        ? '0 0 0 0.2rem var(--focusShadow);'
+        ? '0 0 0 0.2rem var(--focusShadow)'
         : provided.boxShadow,
       '&:hover': {
         borderColor: 'var(--grey600)',

@@ -36,7 +36,11 @@ describe('useConversion', () => {
   });
 
   it('reads ?time= and ?timezone= query params as initial values', () => {
-    window.history.replaceState({}, '', '/?time=1700000000&timezone=America%2FNew_York');
+    window.history.replaceState(
+      {},
+      '',
+      '/?time=1700000000&timezone=America%2FNew_York',
+    );
 
     const { result } = renderHook(() => useConversion());
 
