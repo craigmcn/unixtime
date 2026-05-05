@@ -12,6 +12,8 @@ yarn preview      # Preview the production build locally
 yarn lint         # ESLint with auto-fix on src/
 ```
 
+**Pre-commit hook (husky):** runs `yarn lint && yarn test:run` automatically on each commit.
+
 **Tests:** Vitest + Testing Library. Run `yarn test` (watch), `yarn test:run` (single pass), or `yarn coverage` (coverage report).
 - Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
 - Hook tests: `src/lib/hooks/useConversion.test.ts`, `src/lib/hooks/useCopyToClipboard.test.ts`
