@@ -1,23 +1,23 @@
-import { useCallback, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useCallback, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleInfo,
   faRedo,
   faCopy,
-} from '@fortawesome/sharp-duotone-light-svg-icons';
+} from "@fortawesome/sharp-duotone-light-svg-icons";
 import {
   DOCUMENT_TITLE,
   LONG_DATE,
   RFC_2822,
   SHORT_DATE,
   UTC,
-} from '../../lib/constants';
-import { IConversion } from '../../lib/types';
-import Alert from '../Shared/Alert';
-import Section from '../Shared/Section';
-import Button from '../Shared/Button';
-import useCopyToClipboard from '../../lib/hooks/useCopyToClipboard';
-import { getRequestUrl } from '../../lib/functions';
+} from "../../lib/constants";
+import { IConversion } from "../../lib/types";
+import Alert from "../Shared/Alert";
+import Section from "../Shared/Section";
+import Button from "../Shared/Button";
+import useCopyToClipboard from "../../lib/hooks/useCopyToClipboard";
+import { getRequestUrl } from "../../lib/functions";
 
 interface IResultProps {
   data: IConversion;
@@ -35,7 +35,7 @@ const Result = ({ data }: IResultProps) => {
   useEffect(() => {
     const documentTime =
       !timezone || timezone === UTC ? dateTime.utc() : dateTime.tz(timezone);
-    document.title = documentTime.format(LONG_DATE) + ' - ' + DOCUMENT_TITLE;
+    document.title = documentTime.format(LONG_DATE) + " - " + DOCUMENT_TITLE;
   }, [dateTime, timezone]);
 
   return (
@@ -46,7 +46,7 @@ const Result = ({ data }: IResultProps) => {
 
       <div className="card__body">
         {(error || warning) && (
-          <Alert type={error ? 'error' : 'warning'}>{error || warning}</Alert>
+          <Alert type={error ? "error" : "warning"}>{error || warning}</Alert>
         )}
         <dl id="results">
           <dt className="fw-bold">
@@ -91,7 +91,7 @@ const Result = ({ data }: IResultProps) => {
           )}
 
           <dt className="fw-bold mt-2">ISO 8601</dt>
-          <dd>{dateTime?.format('YYYY-MM-DDTHH:mm:ss.SSSZ')}</dd>
+          <dd>{dateTime?.format("YYYY-MM-DDTHH:mm:ss.SSSZ")}</dd>
           <dt className="fw-bold mt-2">RFC 2822</dt>
           <dd>{dateTime?.format(RFC_2822)}</dd>
         </dl>

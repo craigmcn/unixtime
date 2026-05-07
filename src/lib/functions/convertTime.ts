@@ -1,7 +1,7 @@
-import * as chrono from 'chrono-node';
-import dayjs from '../dayjs';
-import { IConversion } from '../types';
-import { NOW, UTC } from '../constants';
+import * as chrono from "chrono-node";
+import dayjs from "../dayjs";
+import { IConversion } from "../types";
+import { NOW, UTC } from "../constants";
 
 export const convertTime = (
   submitTime: number | string,
@@ -14,7 +14,7 @@ export const convertTime = (
   let chronoTime;
   let error;
   let warning;
-  let title = 'Converted time';
+  let title = "Converted time";
   let timezone = submitTimezone || UTC;
 
   if (submitTime) {
@@ -23,14 +23,14 @@ export const convertTime = (
   } else {
     const d = new Date();
     numericTime = time = d.getTime();
-    title = 'Current time';
+    title = "Current time";
   }
 
   if (
     !timezone ||
-    (!Intl.supportedValuesOf('timeZone').includes(timezone) && timezone !== UTC)
+    (!Intl.supportedValuesOf("timeZone").includes(timezone) && timezone !== UTC)
   ) {
-    warning = timezone ? 'Invalid timezone provided. Switched to UTC.' : '';
+    warning = timezone ? "Invalid timezone provided. Switched to UTC." : "";
     timezone = UTC;
   }
 
@@ -46,13 +46,13 @@ export const convertTime = (
       dateTime = dayjs(chronoTime[0].start.date());
       if (timezone && timezone !== UTC) {
         const dateUtc = Date.UTC(
-          chronoTime[0].start.get('year') || defaultDate.getFullYear(),
+          chronoTime[0].start.get("year") || defaultDate.getFullYear(),
           // @ts-expect-error: Object is possibly 'null'.
-          chronoTime[0].start.get('month') - 1 || defaultDate.getMonth(),
-          chronoTime[0].start.get('day') || 1,
-          chronoTime[0].start.get('hour') || 0,
-          chronoTime[0].start.get('minute') || 0,
-          chronoTime[0].start.get('second') || 0,
+          chronoTime[0].start.get("month") - 1 || defaultDate.getMonth(),
+          chronoTime[0].start.get("day") || 1,
+          chronoTime[0].start.get("hour") || 0,
+          chronoTime[0].start.get("minute") || 0,
+          chronoTime[0].start.get("second") || 0,
         );
         // utcOffset() returns minutes east of UTC; moment-timezone's parse()
         // returned minutes west, so negate before applying to the unix calc.
@@ -62,7 +62,7 @@ export const convertTime = (
         );
       }
     } else {
-      error = 'Invalid time provided. Switched to current time.';
+      error = "Invalid time provided. Switched to current time.";
       dateTime = dayjs().tz(timezone || UTC);
     }
   } else {

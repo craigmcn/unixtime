@@ -1,10 +1,10 @@
-import type { MouseEvent, ReactNode } from 'react';
-import classNames from 'classnames';
+import type { MouseEvent, ReactNode } from "react";
+import classNames from "classnames";
 
 interface IButtonProps {
   children: ReactNode;
   className?: string;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   href?: string;
   title?: string;
   onClick?: (e?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
@@ -13,7 +13,7 @@ interface IButtonProps {
 const Button = ({
   children,
   className,
-  type = 'button',
+  type = "button",
   href,
   title,
   ...props
@@ -22,7 +22,7 @@ const Button = ({
     <>
       {!href && (
         <button
-          className={classNames('button', className)}
+          className={classNames("button", className)}
           type={type}
           title={title}
           {...props}
@@ -32,7 +32,7 @@ const Button = ({
       )}
       {href && (
         <a
-          className={classNames('button', className)}
+          className={classNames("button", className)}
           href={href}
           title={title}
           {...props}

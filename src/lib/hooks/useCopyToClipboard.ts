@@ -1,5 +1,5 @@
 // From https://usehooks-ts.com/react-hook/use-copy-to-clipboard
-import { useState } from 'react';
+import { useState } from "react";
 
 type CopiedValue = string | null;
 type CopyFn = (text: string) => Promise<boolean>; // Return success
@@ -9,7 +9,7 @@ function useCopyToClipboard(): [CopiedValue, CopyFn] {
 
   const copy: CopyFn = async (text) => {
     if (!navigator?.clipboard) {
-      console.warn('Clipboard not supported'); // eslint-disable-line no-console
+      console.warn("Clipboard not supported"); // eslint-disable-line no-console
       return false;
     }
 
@@ -19,7 +19,7 @@ function useCopyToClipboard(): [CopiedValue, CopyFn] {
       setCopiedText(text);
       return true;
     } catch (error) {
-      console.warn('Copy failed', error); // eslint-disable-line no-console
+      console.warn("Copy failed", error); // eslint-disable-line no-console
       setCopiedText(null);
       return false;
     }
