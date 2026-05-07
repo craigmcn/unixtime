@@ -23,6 +23,7 @@ yarn build      # type-check + build to dist/
 yarn lint           # ESLint with auto-fix
 yarn format         # Prettier write
 yarn format:check   # Prettier check (used in pre-commit hook and CI)
+yarn test           # Vitest watch mode
 yarn test:run       # Vitest single pass
 yarn coverage       # Vitest single pass with coverage report
 ```
