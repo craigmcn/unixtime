@@ -20,9 +20,10 @@ Converts a Unix timestamp or natural-language date string into UTC, local timezo
 yarn install
 yarn dev        # dev server at http://localhost:3120
 yarn build      # type-check + build to dist/
-yarn lint       # ESLint with auto-fix
-yarn format     # Prettier
-yarn coverage   # Vitest + coverage report
+yarn lint           # ESLint with auto-fix
+yarn format         # Prettier write
+yarn format:check   # Prettier check (used in pre-commit hook and CI)
+yarn coverage       # Vitest + coverage report
 ```
 
 ## Testing
