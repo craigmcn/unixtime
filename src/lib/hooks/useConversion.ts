@@ -21,8 +21,14 @@ const useConversion = () => {
 
   useEffect(() => {
     const { time, timezone: convertTimezone } = conversion || ({} as IFormData);
-    const { dateTime, time: convertedTime, timezone, error, warning, title } =
-      convertTime(time, convertTimezone);
+    const {
+      dateTime,
+      time: convertedTime,
+      timezone,
+      error,
+      warning,
+      title,
+    } = convertTime(time, convertTimezone);
 
     setData({ dateTime, time: convertedTime, timezone, error, warning, title });
   }, [conversion]);

@@ -10,9 +10,11 @@ yarn build        # Type-check (tsc) then build to dist/
 yarn build:netlify  # Build two output dirs: netlify/ and netlify/unixtime/ (for Netlify subdirectory)
 yarn preview      # Preview the production build locally
 yarn lint         # ESLint with auto-fix on src/
+yarn format       # Prettier write on src/ and index.html
+yarn format:check # Prettier check (no write) — used in hook and CI
 ```
 
-**Pre-commit hook (husky):** runs `yarn lint && yarn test:run` automatically on each commit.
+**Pre-commit hook (husky):** runs `yarn format:check && yarn lint && tsc -b && yarn test:run` automatically on each commit.
 
 **Tests:** Vitest + Testing Library. Run `yarn test` (watch), `yarn test:run` (single pass), or `yarn coverage` (coverage report).
 - Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
