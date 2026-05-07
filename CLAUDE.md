@@ -55,7 +55,7 @@ This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-
 
 **ESLint + Prettier conventions to follow:**
 - Config: `eslint.config.mjs` (ESLint 9 flat config). No `.eslintrc`.
-- Formatting is handled by Prettier (`.prettierrc`): single quotes, semi-colons, tab width (i.e., 2 spaces). Run `yarn format` to apply.
+- Formatting is handled by Prettier (`.prettierrc`): Prettier defaults only, no custom formatting. Run `yarn format` to apply.
 - ESLint handles code quality only — recommended rules from `@typescript-eslint`, `eslint-plugin-react`, and `eslint-plugin-react-hooks`, plus:
   - Interfaces must be prefixed with `I` (e.g. `IFormData`).
   - `react/jsx-no-bind` is enabled — don't pass inline arrow functions as JSX props; use `useCallback`.
