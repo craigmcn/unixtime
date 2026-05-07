@@ -34,9 +34,7 @@ const Result = ({ data }: IResultProps) => {
 
   useEffect(() => {
     const documentTime =
-      !timezone || timezone === UTC
-        ? dateTime.utc()
-        : dateTime.tz(timezone);
+      !timezone || timezone === UTC ? dateTime.utc() : dateTime.tz(timezone);
     document.title = documentTime.format(LONG_DATE) + ' - ' + DOCUMENT_TITLE;
   }, [dateTime, timezone]);
 

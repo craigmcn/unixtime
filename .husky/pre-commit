@@ -1,1 +1,1 @@
-yarn lint && yarn test:run
+yarn format:check && yarn lint && tsc -b && yarn test:run
