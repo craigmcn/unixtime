@@ -1,5 +1,5 @@
-import Logo from './Logo';
-import { DOCUMENT_TITLE } from '../../lib/constants';
+import Logo from "./Logo";
+import { DOCUMENT_TITLE } from "../../lib/constants";
 
 const Header = () => {
   return (

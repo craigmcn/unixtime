@@ -8,7 +8,7 @@ export interface IValue {
   label: string;
 }
 
-import type { Dayjs } from 'dayjs';
+import type { Dayjs } from "dayjs";
 
 export interface IConversion {
   dateTime: Dayjs;

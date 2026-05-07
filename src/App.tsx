@@ -1,9 +1,9 @@
-import React from 'react';
-import useConversion from './lib/hooks/useConversion';
-import Header from './components/Header/Header';
-import Main from './components/Shared/Main';
-import Form from './components/Converter/Form';
-import Result from './components/Converter/Result';
+import React from "react";
+import useConversion from "./lib/hooks/useConversion";
+import Header from "./components/Header/Header";
+import Main from "./components/Shared/Main";
+import Form from "./components/Converter/Form";
+import Result from "./components/Converter/Result";
 
 function App() {
   const { data, setConversion } = useConversion();

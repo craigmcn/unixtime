@@ -1,5 +1,5 @@
-import { NOW } from '../constants';
-import { IConversion } from '../types';
+import { NOW } from "../constants";
+import { IConversion } from "../types";
 
 export const getRequestUrl = ({
   time,
@@ -13,7 +13,7 @@ export const getRequestUrl = ({
       (time as string).toLowerCase() === NOW || !dateTime
         ? NOW
         : dateTime.unix().toString(),
-    timezone: timezone || '',
+    timezone: timezone || "",
   };
   const new_params = new URLSearchParams(Object.entries(add_params)).toString();
 

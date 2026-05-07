@@ -4,14 +4,14 @@ import {
   useRef,
   useState,
   type FormEvent,
-} from 'react';
-import { SelectInstance } from 'react-select';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/sharp-duotone-light-svg-icons';
-import { IFormData, IValue } from '../../lib/types';
-import Section from '../Shared/Section';
-import Button from '../Shared/Button';
-import Select from './Select';
+} from "react";
+import { SelectInstance } from "react-select";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock } from "@fortawesome/sharp-duotone-light-svg-icons";
+import { IFormData, IValue } from "../../lib/types";
+import Section from "../Shared/Section";
+import Button from "../Shared/Button";
+import Select from "./Select";
 
 interface IFormProps {
   setConversion: (data: IFormData) => void;
@@ -26,12 +26,12 @@ const Form = ({ setConversion }: IFormProps) => {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setConversion({
-        time: timeRef.current?.value || '',
-        timezone: (timezoneRef.current?.props.value as IValue)?.value || '',
+        time: timeRef.current?.value || "",
+        timezone: (timezoneRef.current?.props.value as IValue)?.value || "",
       });
 
       if (timeRef.current) {
-        timeRef.current.value = '';
+        timeRef.current.value = "";
         timeRef.current?.focus();
       }
     },
@@ -39,7 +39,7 @@ const Form = ({ setConversion }: IFormProps) => {
   );
 
   useEffect(() => {
-    import('../../data/timezones.json').then(({ default: options }) =>
+    import("../../data/timezones.json").then(({ default: options }) =>
       setOptions(options),
     );
   }, []);
