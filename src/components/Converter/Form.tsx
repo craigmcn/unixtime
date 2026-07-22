@@ -60,7 +60,7 @@ const Form = ({ setConversion }: IFormProps) => {
             maxLength={64}
             placeholder="Enter a date and time or a timestamp"
             required
-            // eslint-disable-next-line jsx-a11y/no-autofocus -- sole interactive control on a single-purpose page
+            // eslint-disable-next-line jsx-a11y/no-autofocus -- primary input for keyboard-first entry on page load
             autoFocus
           />
         </div>
