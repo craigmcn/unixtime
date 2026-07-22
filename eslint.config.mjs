@@ -57,5 +57,11 @@ export default [
       'no-console': 'warn',
     },
   },
+  {
+    files: ['playwright.config.ts'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
   eslintConfigPrettier,
 ];
