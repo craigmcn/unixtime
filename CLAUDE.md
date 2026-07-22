@@ -20,6 +20,7 @@ yarn format:check # Prettier check (no write) — used in hook and CI
 - Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
 - Hook tests: `src/lib/hooks/useConversion.test.ts`, `src/lib/hooks/useCopyToClipboard.test.ts`
 - Component tests: `src/components/Header/Header.test.tsx`, `src/components/Shared/Alert.test.tsx`, `src/components/Shared/Button.test.tsx`, `src/components/Converter/Form.test.tsx`, `src/components/Converter/Result.test.tsx`
+- Accessibility: `src/App.test.tsx` runs `vitest-axe` against the full rendered app. Pinned to `1.0.0-pre.5` — the published `0.1.0` ships a broken (empty) `extend-expect.js`. `eslint-plugin-jsx-a11y` (`recommended` rules) also runs over `src` via ESLint.
 
 ## Architecture
 
