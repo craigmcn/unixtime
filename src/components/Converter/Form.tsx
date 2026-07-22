@@ -60,6 +60,7 @@ const Form = ({ setConversion }: IFormProps) => {
             maxLength={64}
             placeholder="Enter a date and time or a timestamp"
             required
+            // eslint-disable-next-line jsx-a11y/no-autofocus -- sole interactive control on a single-purpose page
             autoFocus
           />
         </div>
@@ -69,7 +70,7 @@ const Form = ({ setConversion }: IFormProps) => {
             Time zone <small>(optional)</small>
           </label>
           <Select
-            id="timezone"
+            inputId="timezone"
             innerRef={timezoneRef}
             options={options}
             isClearable
