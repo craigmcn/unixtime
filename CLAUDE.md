@@ -39,7 +39,7 @@ This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-
 
 **URL state:** `useConversion` reads `?time=` and `?timezone=` query params on mount as initial values. `Result` exposes a "Repeat" link and a "Copy" button that encode the current conversion as a shareable URL via `getRequestUrl()`.
 
-**Styling:** AlbertCSS v0.15.0, served via CDN (`https://albertcss.craigmcn.com/v0.15.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. Custom project styles live in `src/index.css`.
+**Styling:** AlbertCSS v0.18.0, served via CDN (`https://albertcss.craigmcn.com/v0.18.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. Custom project styles live in `src/index.css`.
 
 **CSS conventions:**
 - Use modern CSS nesting with `&` and nested `@media` — no preprocessor (PostCSS/Sass/Tailwind removed).
