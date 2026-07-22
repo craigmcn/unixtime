@@ -21,6 +21,7 @@ yarn test:e2e     # Playwright E2E tests (Chromium, headless) — CI only
 - Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
 - Hook tests: `src/lib/hooks/useConversion.test.ts`, `src/lib/hooks/useCopyToClipboard.test.ts`
 - Component tests: `src/components/Header/Header.test.tsx`, `src/components/Shared/Alert.test.tsx`, `src/components/Shared/Button.test.tsx`, `src/components/Converter/Form.test.tsx`, `src/components/Converter/Result.test.tsx`
+- Accessibility: `src/App.test.tsx` runs `vitest-axe` against the full rendered app. Pinned to `1.0.0-pre.5` — the published `0.1.0` ships a broken (empty) `extend-expect.js`. `eslint-plugin-jsx-a11y` (`recommended` rules) also runs over `src` via ESLint.
 
 **E2E tests:** Playwright, Chromium only, headless. `yarn test:e2e` runs `playwright test` against `e2e/*.spec.ts`, starting `yarn dev` on port 3120 via `webServer`. `playwright.config.ts` pins the browser context to `timezoneId: "UTC"` so assertions on formatted dates are stable regardless of the host machine's local timezone. Runs in CI only (`.github/workflows/test.yml`), not in the pre-commit hook — browser install + startup is too slow for a hook. `vitest.config.ts` excludes `e2e/**` so Vitest and Playwright don't pick up each other's spec files; `tsc -b` still type-checks `e2e/` via `tsconfig.node.json` and emits compiled `.js`/`.d.ts` next to the `.ts` sources (gitignored) — `playwright.config.ts`'s `testMatch: "**/*.spec.ts"` keeps Playwright from also running those compiled duplicates.
 
@@ -42,7 +43,7 @@ This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-
 
 **URL state:** `useConversion` reads `?time=` and `?timezone=` query params on mount as initial values. `Result` exposes a "Repeat" link and a "Copy" button that encode the current conversion as a shareable URL via `getRequestUrl()`.
 
-**Styling:** AlbertCSS v0.15.0, served via CDN (`https://albertcss.craigmcn.com/v0.15.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. Custom project styles live in `src/index.css`.
+**Styling:** AlbertCSS v0.18.0, served via CDN (`https://albertcss.craigmcn.com/v0.18.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. Custom project styles live in `src/index.css`.
 
 **CSS conventions:**
 - Use modern CSS nesting with `&` and nested `@media` — no preprocessor (PostCSS/Sass/Tailwind removed).

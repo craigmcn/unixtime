@@ -3,6 +3,7 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
@@ -14,6 +15,7 @@ export default [
       '@typescript-eslint': tsPlugin,
       'react': reactPlugin,
       'react-hooks': reactHooks,
+      'jsx-a11y': jsxA11y,
     },
     languageOptions: {
       parser: tsParser,
@@ -48,6 +50,9 @@ export default [
 
       // React Hooks recommended
       ...reactHooks.configs.recommended.rules,
+
+      // jsx-a11y recommended
+      ...jsxA11y.configs.recommended.rules,
 
       'no-console': 'warn',
     },

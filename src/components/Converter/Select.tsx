@@ -5,7 +5,7 @@ import { IValue } from "../../lib/types";
 type ISize = "sm" | "md" | "lg";
 
 interface ISelectProps {
-  id?: string;
+  inputId?: string;
   innerRef?: Ref<SelectInstance<IValue>>;
   options: IValue[];
   isClearable?: boolean;
