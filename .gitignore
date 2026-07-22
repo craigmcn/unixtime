@@ -29,9 +29,19 @@ netlify
 # Test coverage
 coverage
 
+# Playwright
+playwright-report
+test-results
+blob-report
+playwright/.cache
+
 # TypeScript composite build artifacts
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts
 vitest.config.js
 vitest.config.d.ts
+playwright.config.js
+playwright.config.d.ts
+e2e/*.js
+e2e/*.d.ts
