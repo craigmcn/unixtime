@@ -1,0 +1,10 @@
+/* Linked from index.html, not imported from JS, so it applies with JS off. */
+.noscript-fill {
+  min-height: 100vh;
+}
+
+/* svg.class outranks Font Awesome's .svg-inline--fa sizing. */
+svg.noscript-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

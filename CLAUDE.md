@@ -18,7 +18,7 @@ yarn test:e2e     # Playwright E2E tests (Chromium, headless) — CI only
 **Pre-commit hook (husky):** runs `yarn format:check && yarn lint && tsc -b && yarn test:run` automatically on each commit.
 
 **Tests:** Vitest + Testing Library. Run `yarn test` (watch), `yarn test:run` (single pass), or `yarn coverage` (coverage report).
-- Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`
+- Unit tests: `src/lib/functions/convertTime.test.ts`, `src/lib/functions/index.test.ts`, `src/securityHeaders.test.ts`
 - Hook tests: `src/lib/hooks/useConversion.test.ts`, `src/lib/hooks/useCopyToClipboard.test.ts`
 - Component tests: `src/components/Header/Header.test.tsx`, `src/components/Shared/Alert.test.tsx`, `src/components/Shared/Button.test.tsx`, `src/components/Converter/Form.test.tsx`, `src/components/Converter/Result.test.tsx`
 - Accessibility: `src/App.test.tsx` runs `vitest-axe` against the full rendered app. Pinned to `1.0.0-pre.5` — the published `0.1.0` ships a broken (empty) `extend-expect.js`. `eslint-plugin-jsx-a11y` (`recommended` rules) also runs over `src` via ESLint.
@@ -43,7 +43,7 @@ This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-
 
 **URL state:** `useConversion` reads `?time=` and `?timezone=` query params on mount as initial values. `Result` exposes a "Repeat" link and a "Copy" button that encode the current conversion as a shareable URL via `getRequestUrl()`.
 
-**Styling:** AlbertCSS v0.18.0, served via CDN (`https://albertcss.craigmcn.com/v0.18.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. Custom project styles live in `src/index.css`.
+**Styling:** AlbertCSS v0.18.0, served via CDN (`https://albertcss.craigmcn.com/v0.18.0/css/albert.min.css`). Dark mode is automatic via CSS custom properties — no `dark:` prefixes. The `react-select` timezone dropdown is wrapped in `src/components/Converter/Select.tsx`, which applies a `StylesConfig<IValue>` via `useMemo` — custom props (e.g. `size`) are closed over from the component's own props rather than passed through `selectProps`. The only project stylesheet is `src/noscript.css` (the `<noscript>` fallback), linked from `index.html` so it applies without JS.
 
 **CSS conventions:**
 - Use modern CSS nesting with `&` and nested `@media` — no preprocessor (PostCSS/Sass/Tailwind removed).
@@ -51,6 +51,8 @@ This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-
 - AlbertCSS class mappings: `sr-only` → `visually-hidden`; `font-bold` → `fw-bold`; `flex items-center` → `d-flex align-items-center`; `np__bg`/`np__txt` for SVG fills in dark mode.
 
 **Timezone data:** `src/data/timezones.json` is a static list of `{value, label}` objects loaded lazily in `Form` via a dynamic `import()`.
+
+**Security headers:** `netlify.toml` sets the CSP, `nosniff`, `Referrer-Policy` and `Permissions-Policy` (Netlify only; GitHub Pages can't set headers). It also holds the `[build]` settings, overriding the Netlify UI. `style-src` allows albertcss, Google Fonts and the empty-string hash (`47DEQ…`), which react-select's Emotion needs: it creates empty `<style>` tags and fills them via CSSOM. Font Awesome uses `config.autoAddCss = false` plus the bundled `styles.css` (set in `src/index.tsx`). `src/securityHeaders.test.ts` fails if `index.html`'s inline trailing-slash script drifts from its CSP hash; to verify a change, serve `build:netlify` output with these headers and check the console.
 
 **Two build configs:**
 - `vite.config.ts` — standard build to `dist/`, relative base (`./`).
