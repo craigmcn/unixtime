@@ -55,11 +55,14 @@
       rel="stylesheet"
       href="https://albertcss.craigmcn.com/v0.18.0/css/albert.min.css"
     />
+    <link rel="stylesheet" href="/src/noscript.css" />
   </head>
 
   <body>
     <noscript>
-      <div class="d-flex align-items-center justify-content-center p-4">
+      <div
+        class="noscript-fill d-flex align-items-center justify-content-center p-4"
+      >
         <div class="alert alert--danger d-flex align-items-center" role="alert">
           <!-- FontAwesome requires Javascript. This is the FA SVG inline. -->
           <svg
@@ -67,12 +70,10 @@
             focusable="false"
             data-prefix="fad"
             data-icon="shield-exclamation"
-            class="svg-inline--fa fa-shield-exclamation alert__icon"
+            class="svg-inline--fa fa-shield-exclamation alert__icon noscript-icon"
             role="img"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
-            width="24"
-            height="24"
           >
             <g>
               <path

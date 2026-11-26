@@ -30,6 +30,13 @@ describe("Content-Security-Policy", () => {
     }
   });
 
+  // react-select's Emotion inserts empty <style> tags, then fills them via
+  // CSSOM; without this hash the timezone dropdown renders unstyled.
+  it("allows empty <style> tags by the empty-string hash", async () => {
+    const styleSrc = netlifyToml.match(/style-src ([^;"]*)/)?.[1] ?? "";
+    expect(styleSrc).toContain(`'sha256-${await sha256Base64("")}'`);
+  });
+
   it("finds inline scripts whatever their attributes or case", () => {
     const html = [
       "<script>bare()</script>",

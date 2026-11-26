@@ -2,11 +2,9 @@
   command = "yarn build:netlify"
   publish = "netlify"
 
-# CSP lists only directives that differ from default-src 'self' (albertcss and
-# its Google Fonts). index.html's inline script must run before the bundle
-# loads, so it's allowed by hash; src/securityHeaders.test.ts catches drift.
-# style-src's hash is of the empty string: react-select's Emotion creates empty
-# <style> tags and fills them via CSSOM insertRule, so no inline CSS is allowed.
+# CSP lists only directives that differ from default-src 'self'. The script
+# hash is index.html's inline script; the style hash is the empty string, for
+# react-select's Emotion (see CLAUDE.md). src/securityHeaders.test.ts guards both.
 [[headers]]
   for = "/*"
   [headers.values]
