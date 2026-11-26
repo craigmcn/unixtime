@@ -1,0 +1,16 @@
+[build]
+  command = "yarn build:netlify"
+  publish = "netlify"
+
+# CSP lists only directives that differ from default-src 'self' (albertcss and
+# its Google Fonts). index.html's inline script must run before the bundle
+# loads, so it's allowed by hash; src/securityHeaders.test.ts catches drift.
+# style-src's hash is of the empty string: react-select's Emotion creates empty
+# <style> tags and fills them via CSSOM insertRule, so no inline CSS is allowed.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-FGALV05D4g7G4BENEzItcsKln/YAzSyPZhwTWZS+i2g='; style-src 'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' https://albertcss.craigmcn.com https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
