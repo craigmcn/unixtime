@@ -56,7 +56,7 @@ This is a single-page React + TypeScript app built with Vite 8 (`@vitejs/plugin-
 
 **Two build configs:**
 - `vite.config.ts` — standard build to `dist/`, relative base (`./`).
-- `vite.config.netlify.ts` — outputs to both `netlify/` and `netlify/unixtime/` in one build, for deployment at root and under a subdirectory simultaneously.
+- `vite.config.netlify.ts` — outputs to both `netlify/` and `netlify/unixtime/` in one build, for deployment at root and under a subdirectory simultaneously. Base is absolute (`/unixtime/`), so both copies load assets from `netlify/unixtime/assets/`: craigmcn.com proxies `/unixtime` without a trailing slash (Netlify redirects can't add one), and with JS off the inline slash-redirect can't run, so relative URLs would resolve against `/`.
 - Both configs use `@vitejs/plugin-react` and a `manualChunks` function (Rolldown/Vite 8 requires a function, not an object) that puts React, FontAwesome, and Day.js into a `vendor` chunk.
 
 **ESLint + Prettier conventions to follow:**

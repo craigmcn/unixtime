@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  // Absolute, so craigmcn.com/unixtime (no trailing slash; Netlify can't add
+  // one) still loads assets with JS off. The root copy uses /unixtime/ too.
+  base: '/unixtime/',
   build: {
     rollupOptions: {
       output: [
